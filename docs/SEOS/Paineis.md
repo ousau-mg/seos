@@ -14,9 +14,9 @@ import Heading from '@theme/Heading';
   <Heading as="h3" className="margin-top--lg"> OUSAU - REGIONAIS E MUNICÍPIOS</Heading>
   <div style={{ position: 'relative', overflow: 'hidden', width: '100%', marginBottom: '20px' }}>
     <iframe
-      src="https://app.powerbi.com/view?r=eyJrIjoiNTMzYWQxODQtY2M1Yi00YzM0LThkYzctOGM5NDIwYTM0MDU4IiwidCI6IjUzMzU2OTg2LTY4OGMtNGNiOS1hZTNhLWU4ZGJmNjkxMWE0MyJ9"
+      src="https://app.powerbi.com/view?r=eyJrIjoiOGY0NjIzY2UtYzJjNy00ZTFlLWE5MmMtNWYzNTllM2ZkZGVjIiwidCI6ImU1ZDNhZTdjLTliMzgtNDhkZS1hMDg3LWY2NzM0YTI4NzU3NCJ9"
       width="100%"
-      height="900"
+      height="500"
       title="BI Interno"
       style={{ border: 0, borderRadius: '8px' }}
       allowFullScreen={true}
@@ -69,10 +69,6 @@ import Heading from '@theme/Heading';
 
 ---
 
-
-## Programação Anual de Saúde
-
-- **RDQA**: [Visualizar Documento](#)
 
 ## Síntese
 

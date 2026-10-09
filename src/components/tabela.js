@@ -1,54 +1,70 @@
 import React from 'react';
 
 export const LinkRow = ({ tema, fonte, desc, url }) => (
-  <div style={{ 
-    display: 'flex', 
-    alignItems: 'center', 
-    padding: '1rem', 
-    borderBottom: '1px solid var(--ifm-color-emphasis-200)',
-    gap: '15px' 
-  }}>
-    <div style={{ flex: 1 }}>
-       <small style={{ 
-         color: 'var(--ifm-color-primary)', 
-         fontWeight: 'bold', 
-         display: 'block', 
-         marginBottom: '4px' 
-       }}>
-         {tema}
-       </small>
-       <strong>{fonte}</strong>
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '16px 20px',
+      borderBottom: '1px solid var(--ifm-color-emphasis-200)',
+      color: 'inherit',
+      textDecoration: 'none',
+      transition: 'background-color 0.2s ease',
+      cursor: 'pointer',
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.backgroundColor = 'var(--ifm-color-emphasis-100)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.backgroundColor = 'transparent';
+    }}
+  >
+    {/* Coluna 1: Tema e Fonte */}
+    <div style={{ flex: '0 0 220px', paddingRight: '15px' }}>
+      {tema && (
+        <small
+          style={{
+            color: 'var(--ifm-color-primary)',
+            fontWeight: 'bold',
+            display: 'block',
+            textTransform: 'uppercase',
+            marginBottom: '4px',
+          }}
+        >
+          {tema}
+        </small>
+      )}
+      {fonte && <strong>{fonte}</strong>}
     </div>
-    <div style={{ 
-      flex: 2, 
-      fontSize: '0.9rem', 
-      color: 'var(--ifm-color-content-secondary)' 
-    }}>
+
+    {/* Coluna 2: Descrição */}
+    <div
+      style={{
+        flex: 1,
+        paddingRight: '20px',
+        fontSize: '0.9rem',
+        color: 'var(--ifm-font-color-base)',
+      }}
+    >
       {desc}
     </div>
-    <div style={{ flex: 1, textAlign: 'right' }}>
-      <a 
-        href={url} 
-        target="_blank" 
-        rel="noopener noreferrer"
-        style={{ 
-          display: 'inline-flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'var(--ifm-color-primary)', 
-          color: 'white', 
-          padding: '8px 16px',
-          borderRadius: '6px',
-          fontWeight: '600',
-          textDecoration: 'none',
-          fontSize: '0.85rem',
-          transition: 'opacity 0.2s ease-in-out', 
-        }}
-        onMouseOver={(e) => e.currentTarget.style.opacity = '0.8'} 
-        onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
-      >
-        Acessar
-      </a>
+
+    {/* Coluna 3: Seta indicando que a caixa é um link */}
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        color: 'var(--ifm-color-primary)',
+        fontSize: '1.1rem',
+      }}
+    >
+      ➔
     </div>
-  </div>
+  </a>
 );
+
+export default LinkRow;

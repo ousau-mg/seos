@@ -29,7 +29,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-heroDistance {
+.heroDistance {
   margin-top: 80px; /* Ajuste o valor conforme achar melhor */
 }
 
@@ -52,4 +52,37 @@ heroDistance {
   border-radius: 100%;
   aspect-ratio: 1 / 1; /* Garante que seja um círculo se a imagem for quadrada */
   object-fit: cover;
+}
+
+/* ==========================================================================
+   Estilos para as Caixas de Links (LinkRow)
+   ========================================================================== */
+
+/* Estilo base do link em linha */
+.link-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+/* Efeito de hover (modo claro) */
+.link-row-item:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  text-decoration: none !important;
+}
+
+/* Efeito de hover para modo escuro */
+[data-theme='dark'] .link-row-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Remove a linha inferior do último item dentro de cada bloco */
+div > .link-row-item:last-child {
+  border-bottom: none !important;
 }

@@ -40,22 +40,16 @@ export default function Home() {
           {/* SEÇÃO LADO A LADO: TEXTO E VÍDEO */}
           <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
             <div className="col col--6">
-              <Heading as="h2">Ouvidoria de Saúde</Heading>
+              <Heading as="h2">SEOS</Heading>
               <p>
-                A Ouvidoria de Saúde é a ponte entre a sociedade e o Governo nas questões relacionadas aos serviços prestados pelo Sistema Único de Saúde (SUS).
+                
               </p>
               <p>
                 É responsável por receber reclamações, denúncias e sugestões, acompanhando o tratamento da manifestação até a decisão final. Aproxima os usuários dos serviços através de atendimento presencial e móvel.
               </p>
             </div>
             
-            <div className="col col--6">
-              <div style={{ width: '100%',height: "340px", borderRadius: '8px', overflow: 'hidden'}}>
-                <VideoPlayer
-                  url="https://www.youtube.com/watch?v=7PBGVKmX2NQ"
-                />
-              </div>
-            </div>
+            
           </div>
 
           {/* SEÇÃO: SUBMENUS (CARDS) - Agora aparecem logo após o impacto inicial */}
@@ -69,25 +63,20 @@ export default function Home() {
             }}>
               <InfoCard
                 iconName="mdi:pill"
-                title="SEOS"
+                title="Legislação e material de apoio"
                 description="Base legal, contexto, documentos, paineis e relatórios"
-                link="/seos/docs/SEOS"
-                linkText="Acessar"
-              />
-              <InfoCard
-                iconName="material-symbols:computer-outline-rounded"
-                title="OuvidorSUS"
-                description="Adesão e inclusão; operação e tutoriais"
-                link="/seos/docs/Sistema"
+                link="/seos/docs/SEOS/Base-Legal"
                 linkText="Acessar"
               />
               <InfoCard
                 iconName="mdi:map-add"
-                title="Criar Ouvidoria"
-                description="Cartilhas, Guias e Manuais"
+                title="Criando uma Ouvidoria"
+                description="Cartilhas, Guias e Manuais, Adesão e inclusão; operação e tutoriais"
                 link="/seos/docs/Criar"
                 linkText="Acessar"
               />
+
+              
               <InfoCard
                 iconName="mdi:book-open-variant"
                 title="Agenda e capacitações"
