@@ -40,10 +40,7 @@ export default function Home() {
           {/* SEÇÃO LADO A LADO: TEXTO E VÍDEO */}
           <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
             <div className="col col--6">
-              <Heading as="h2">SEOS</Heading>
-              <p>
-                
-              </p>
+             
               <p>
                 É responsável por receber reclamações, denúncias e sugestões, acompanhando o tratamento da manifestação até a decisão final. Aproxima os usuários dos serviços através de atendimento presencial e móvel.
               </p>
@@ -75,8 +72,6 @@ export default function Home() {
                 link="/seos/docs/Criar"
                 linkText="Acessar"
               />
-
-              
               <InfoCard
                 iconName="mdi:book-open-variant"
                 title="Agenda e capacitações"
@@ -89,6 +84,13 @@ export default function Home() {
                 title="Painéis B.I"
                 description="Status de manifestações de ouvidorias de saúde"
                 link="/seos/docs/SEOS/Paineis#secao-bi"
+                linkText="Acessar"
+              />
+              <InfoCard
+                iconName="cuida:headset-outline"
+                title="Canais de Atendimento"
+                description="Principais canais de atendimento da SEOS"
+                link="/seos/docs/Canais_Atendimento/canais"
                 linkText="Acessar"
               />
             </div>
