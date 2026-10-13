@@ -38,13 +38,13 @@ export default function Home() {
         <div className="container margin-vert--lg">
           
           {/* SEÇÃO LADO A LADO: TEXTO E VÍDEO */}
-          <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
-            <div className="col col--6">
+          <div className="row" style={{ alignItems: 'center'}}>
+            
              
               <p>
                 É responsável por receber reclamações, denúncias e sugestões, acompanhando o tratamento da manifestação até a decisão final. Aproxima os usuários dos serviços através de atendimento presencial e móvel.
               </p>
-            </div>
+            
             
             
           </div>
@@ -60,14 +60,14 @@ export default function Home() {
             }}>
               <InfoCard
                 iconName="mdi:pill"
-                title="Legislação e material de apoio"
-                description="Base legal, contexto, documentos, paineis e relatórios"
+                title="Material de apoio"
+                description="Base legal, contexto, documentos, legislação,  paineis e relatórios"
                 link="/seos/docs/SEOS/Base-Legal"
                 linkText="Acessar"
               />
               <InfoCard
                 iconName="mdi:map-add"
-                title="Criando uma Ouvidoria"
+                title="Criar Ouvidoria"
                 description="Cartilhas, Guias e Manuais, Adesão e inclusão; operação e tutoriais"
                 link="/seos/docs/Criar"
                 linkText="Acessar"
@@ -91,6 +91,13 @@ export default function Home() {
                 title="Canais de Atendimento"
                 description="Principais canais de atendimento da SEOS"
                 link="/seos/docs/Canais_Atendimento/canais"
+                linkText="Acessar"
+              />
+              <InfoCard
+                iconName="andrsrxn:file-paper-clip"
+                title="Respostas padrão"
+                description="Guia com as principais respostas padrão"
+                link="/seos/docs/Guia_Respostas"
                 linkText="Acessar"
               />
             </div>
