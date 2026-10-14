@@ -90,7 +90,7 @@ export default function Home() {
                 iconName="cuida:headset-outline"
                 title="Canais de Atendimento"
                 description="Principais canais de atendimento da SEOS"
-                link="/seos/docs/Canais_Atendimento/canais"
+                link="/seos/docs/Canais_Atendimento"
                 linkText="Acessar"
               />
               <InfoCard
