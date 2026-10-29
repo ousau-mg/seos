@@ -3,7 +3,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Sistema Estadual de Ouvidorias do SUS',
+  title: 'Sistema Estadual de Ouvidorias de Saúde do SUS/MG (SEOS/MG)',
   favicon: 'img/LogoOge.png',
 
   future: {
@@ -95,17 +95,7 @@ const config = {
           href: 'https://www.ouvidoriageral.mg.gov.br/',
           width: 160,
         },
-        links: [
-          {
-            title: 'Canais de Atendimento',
-            items: [
-              {
-                label: 'Manifeste aqui 📢',
-                href: 'https://ouvidor.saude.gov.br/public/form-web/registrar',
-              },
-            ],
-          },
-        ],
+        
         copyright: `Copyright © ${new Date().getFullYear()} SEOS. Built with Docusaurus.`,
       },
       prism: {

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 import { LinkRow } from '@site/src/components/tabela';
@@ -22,8 +22,8 @@ import { LinkRow } from '@site/src/components/tabela';
   <LinkRow 
     tema="CARTILHA" 
     fonte="RH" 
-    desc="Cartilha Assédio Sexual" 
-    url="/seos/img/cartilha-assedio-sexual.pdf" 
+    desc="Cartilha Assédio Sexual"
+    url="/img/cartilha-assedio-sexual.pdf" 
   />
 </div>
 

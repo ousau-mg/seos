@@ -38,24 +38,15 @@ export default function Home() {
         <div className="container margin-vert--lg">
           
           {/* SEÇÃO LADO A LADO: TEXTO E VÍDEO */}
-          <div className="row" style={{ alignItems: 'center', marginBottom: '2rem' }}>
-            <div className="col col--6">
-              <Heading as="h2">Ouvidoria de Saúde</Heading>
-              <p>
-                A Ouvidoria de Saúde é a ponte entre a sociedade e o Governo nas questões relacionadas aos serviços prestados pelo Sistema Único de Saúde (SUS).
-              </p>
+          <div className="row" style={{ alignItems: 'center'}}>
+            
+             
               <p>
                 É responsável por receber reclamações, denúncias e sugestões, acompanhando o tratamento da manifestação até a decisão final. Aproxima os usuários dos serviços através de atendimento presencial e móvel.
               </p>
-            </div>
             
-            <div className="col col--6">
-              <div style={{ width: '100%',height: "340px", borderRadius: '8px', overflow: 'hidden'}}>
-                <VideoPlayer
-                  url="https://www.youtube.com/watch?v=7PBGVKmX2NQ"
-                />
-              </div>
-            </div>
+            
+            
           </div>
 
           {/* SEÇÃO: SUBMENUS (CARDS) - Agora aparecem logo após o impacto inicial */}
@@ -69,22 +60,15 @@ export default function Home() {
             }}>
               <InfoCard
                 iconName="mdi:pill"
-                title="SEOS"
-                description="Base legal, contexto, documentos, paineis e relatórios"
-                link="/seos/docs/SEOS"
-                linkText="Acessar"
-              />
-              <InfoCard
-                iconName="material-symbols:computer-outline-rounded"
-                title="OuvidorSUS"
-                description="Adesão e inclusão; operação e tutoriais"
-                link="/seos/docs/Sistema"
+                title="Material de apoio"
+                description="Base legal, contexto, documentos, legislação,  paineis e relatórios"
+                link="/seos/docs/SEOS/Base-Legal"
                 linkText="Acessar"
               />
               <InfoCard
                 iconName="mdi:map-add"
                 title="Criar Ouvidoria"
-                description="Cartilhas, Guias e Manuais"
+                description="Cartilhas, Guias e Manuais, Adesão e inclusão; operação e tutoriais"
                 link="/seos/docs/Criar"
                 linkText="Acessar"
               />
@@ -100,6 +84,20 @@ export default function Home() {
                 title="Painéis B.I"
                 description="Status de manifestações de ouvidorias de saúde"
                 link="/seos/docs/SEOS/Paineis#secao-bi"
+                linkText="Acessar"
+              />
+              <InfoCard
+                iconName="cuida:headset-outline"
+                title="Canais de Atendimento"
+                description="Principais canais de atendimento da SEOS"
+                link="/seos/docs/Canais_Atendimento"
+                linkText="Acessar"
+              />
+              <InfoCard
+                iconName="andrsrxn:file-paper-clip"
+                title="Respostas padrão"
+                description="Guia com as principais respostas padrão"
+                link="/seos/docs/Guia_Respostas"
                 linkText="Acessar"
               />
             </div>
