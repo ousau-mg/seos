@@ -10,7 +10,17 @@ import Heading from '@theme/Heading';
 
 <section>
   <Heading as="h3" style={{ textAlign: 'center', marginBottom: '1.5rem' }}></Heading>
-  <div style={{
+  
+  <style>{`
+    @media screen and (max-width: 768px) {
+      .canais-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+    }
+  `}</style>
+
+  <div className="canais-grid" style={{
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
     gap: '15px',
@@ -20,34 +30,30 @@ import Heading from '@theme/Heading';
     <InfoCard
       iconName="boxicons:phone-ring"
       title="Disque Saúde"
-      description="Central de Teleatendimento do Ministério da Saúde e a Ouvidoria-Geral do SUS: 136"
+      description="Central de Atendimento do Ministério da Saúde e do SUS: 136"
       link="tel:136"
       linkText="Ligar"
     />
     <InfoCard
       iconName="bi:whatsapp"
       title="WhatsApp"
-      description="Fale com a Bel, nossa assistente virtual pelo WhatsApp: (31) 3915-2022"
+      description={<>Fale com a Bel, nossa assistente virtual: <span style={{ whiteSpace: 'nowrap' }}>(31) 3915-2022</span></>}
       link="https://wa.me/553139152022"
       linkText="Acessar"
     />
     <InfoCard
       iconName="dashicons:admin-site"
       title="Site"
-      description="Sistema para registro de manifestações do SUS"
+      description="Sistema online para registro de manifestações do SUS."
       link="https://ouvidor.saude.gov.br/public/form-web/registrar"
       linkText="Acessar"
     />
     <InfoCard
       iconName="energy-icons:smartphone-20-bold"
       title="MG APP OUVIDORIA"
-      description="Aplicativo para registro de manifestações"
+      description="Aplicativo oficial para registro de manifestações."
       link="https://www.ouvidoriageral.mg.gov.br/mg-app-download"
       linkText="Acessar"
     />
   </div>
 </section>
-
-
-
-

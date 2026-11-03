@@ -20,21 +20,20 @@
     --folder-green:#245c3f;
     --paper-hole:#00000022;
     --field-red:#b3261e;
-    --b1:#1e3f52;
-    --b1-tab:#2c5a75;
-    --b2:#1f6f5c;
-    --b2-tab:#2f9680;
-    --b3:#2f6b3a;
-    --b3-tab:#4c8f57;
-    --b4:#245c3f;
-    --b4-tab:#357958;
-    --b5:#2c5f7c;
-    --b5-tab:#3d7fa1;
     --b0:#7a5a1e;
-    --b0-tab:#9c7628;
+    --b1:#1e3f52;
+    --b2:#1f6f5c;
+    --b3:#2f6b3a;
+    --b4:#245c3f;
+    --b5:#2c5f7c;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    overflow-x:hidden;
+  }
   body{
     background:var(--kraft);
     background-image:
@@ -44,46 +43,55 @@
     font-family:'Archivo',sans-serif;
     -webkit-font-smoothing:antialiased;
     min-height:100vh;
+    display:flex;
+    flex-direction:column;
   }
   .mono{font-family:'JetBrains Mono',monospace;}
   .type{font-family:'Special Elite',monospace;}
 
-  /* ===== HEADER — ofício / letterhead ===== */
+  /* ===== HEADER ===== */
   header.top{
     background:var(--card);
     border-bottom:3px solid var(--ink);
     padding:0;
     position:relative;
+    width:100%;
   }
   .letterhead{
-    max-width:1080px; margin:0 auto;
-    padding:26px 28px 22px;
-    display:flex; justify-content:space-between; align-items:flex-start; gap:24px;
+    max-width:1080px; 
+    width:100%;
+    margin:0 auto;
+    padding:20px 24px 16px;
+    display:flex; 
+    justify-content:space-between; 
+    align-items:flex-start; 
+    gap:16px;
+    flex-wrap:wrap;
   }
-  .lh-left{flex:1; min-width:0;}
+  .lh-left{flex:1; min-width:280px;}
   .lh-line1{
     font-family:'JetBrains Mono',monospace;
     font-size:11px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--ink-soft);
     border-bottom:1px solid var(--card-line);
-    padding-bottom:8px; margin-bottom:14px;
+    padding-bottom:6px; margin-bottom:10px;
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
   }
   h1.title{
     margin:0 0 6px;
-    font-size:clamp(24px,3.6vw,36px);
+    font-size:clamp(20px, 4vw, 32px);
     font-weight:900;
     letter-spacing:-.01em;
-    line-height:1.05;
+    line-height:1.1;
     text-transform:uppercase;
   }
   .subtitle{
-    max-width:560px; color:var(--ink-soft);
-    font-size:14px; line-height:1.6; margin:0;
+    max-width:100%; color:var(--ink-soft);
+    font-size:13px; line-height:1.5; margin:0;
   }
   .seal{
     flex:0 0 auto;
-    width:104px; height:104px;
+    width:90px; height:90px;
     border:2.5px solid var(--stamp-red);
     border-radius:50%;
     display:flex; align-items:center; justify-content:center;
@@ -95,49 +103,68 @@
   }
   .seal::before{
     content:"";
-    position:absolute; inset:6px;
+    position:absolute; inset:5px;
     border:1px solid var(--stamp-red);
     border-radius:50%;
   }
   .seal-text{
     font-family:'JetBrains Mono',monospace;
-    font-size:8.5px; font-weight:700;
-    letter-spacing:.06em; text-transform:uppercase;
-    text-align:center; line-height:1.35;
+    font-size:8px; font-weight:700;
+    letter-spacing:.05em; text-transform:uppercase;
+    text-align:center; line-height:1.3;
   }
-  .seal-text b{display:block; font-size:10px; margin:2px 0;}
+  .seal-text b{display:block; font-size:9.5px; margin:2px 0;}
 
-  /* ===== FOLDER TABS NAV ===== */
+  /* Centraliza o selo automaticamente em telas menores (mobile) */
+  @media (max-width: 768px) {
+    .letterhead {
+      align-items: center;
+      text-align: center;
+    }
+    .lh-line1 {
+      justify-content: center;
+      text-align: center;
+    }
+    .seal {
+      margin: 10px auto 0 auto;
+    }
+  }
+
+  /* ===== NAVEGAÇÃO / ABAS AJUSTADAS ===== */
   nav.blocks{
-    max-width:1080px; margin:0 auto;
+    max-width:1080px; 
+    width:100%;
+    margin:0 auto;
     display:flex; align-items:flex-end;
-    padding:0 24px;
-    gap:4px;
+    padding:0 4px;
+    gap:2px;
     overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
     position:sticky; top:0; z-index:40;
     background:var(--kraft);
   }
   nav.blocks::-webkit-scrollbar{display:none;}
   .nav-btn{
-    flex:0 0 auto;
+    flex:1;
     font-family:'JetBrains Mono',monospace;
-    font-size:11px; font-weight:700;
-    letter-spacing:.05em; text-transform:uppercase;
+    font-size:10px; font-weight:700;
+    letter-spacing:.02em; text-transform:uppercase;
     border:2px solid var(--ink);
     border-bottom:none;
     background:var(--kraft-dark);
     color:var(--ink);
-    padding:10px 16px 9px;
+    padding:8px 6px 7px;
     cursor:pointer;
-    clip-path:polygon(0 100%, 0 12px, 12px 0, 100% 0, 100% 100%);
-    margin-top:12px;
+    clip-path:polygon(0 100%, 0 8px, 8px 0, 100% 0, 100% 100%);
+    margin-top:8px;
     transition:transform .15s ease, margin-top .15s ease, background .15s ease;
-    display:flex; align-items:center; gap:7px;
+    display:flex; align-items:center; justify-content:center; gap:4px;
     opacity:.82;
+    white-space:nowrap;
   }
-  .nav-btn .dot{width:7px;height:7px;border-radius:50%; flex:0 0 auto;}
-  .nav-btn:hover{opacity:1; margin-top:8px;}
+  .nav-btn .dot{width:6px;height:6px;border-radius:50%; flex:0 0 auto;}
+  .nav-btn:hover{opacity:1; margin-top:4px;}
   .nav-btn.active{
     background:var(--card);
     margin-top:0;
@@ -146,46 +173,51 @@
   }
 
   /* ===== MAIN ===== */
-  main{max-width:1080px; margin:0 auto; padding:0 24px 90px; background:var(--card); border:2px solid var(--ink); border-top:none; min-height:60vh;}
-  .view{display:none; padding-top:30px;}
+  main{
+    max-width:1080px; 
+    width:100%;
+    margin:0 auto; 
+    padding:20px 24px 30px; 
+    background:var(--card); 
+    border:2px solid var(--ink); 
+    border-top:none; 
+    flex:1;
+  }
+  .view{display:none;}
   .view.active{display:block; animation:fade .3s ease;}
   @keyframes fade{from{opacity:0; transform:translateY(5px);} to{opacity:1; transform:none;}}
 
   .block-head{
     display:flex; justify-content:space-between; align-items:flex-end;
-    gap:20px; margin-bottom:24px; flex-wrap:wrap;
-    padding-bottom:16px;
+    gap:16px; margin-bottom:20px; flex-wrap:wrap;
+    padding-bottom:12px;
     border-bottom:3px double var(--ink);
   }
   .block-head h2{
-    margin:0; font-size:23px; font-weight:900; letter-spacing:-.01em;
+    margin:0; font-size:22px; font-weight:900; letter-spacing:-.01em;
     text-transform:uppercase;
-    display:flex; align-items:center; gap:10px;
+    display:flex; align-items:center; gap:8px;
+    flex-wrap:wrap;
   }
   .block-num{
     font-family:'JetBrains Mono',monospace;
-    font-size:12px; font-weight:700;
+    font-size:11px; font-weight:700;
     color:var(--card);
     background:var(--block-color, var(--b1));
-    padding:4px 8px;
+    padding:3px 6px;
   }
-  .block-desc{color:var(--ink-soft); font-size:13px; max-width:400px; font-style:italic;}
-  .block-foot{
-    margin-top:-10px; margin-bottom:20px;
-    color:var(--ink-soft); font-size:11.5px; line-height:1.5;
-    font-family:'JetBrains Mono',monospace;
-  }
+  .block-desc{color:var(--ink-soft); font-size:12.5px; max-width:100%; font-style:italic;}
 
   .search-row{
-    display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;
+    display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;
   }
   .search-row input{
     flex:1; min-width:220px;
-    padding:10px 14px;
+    padding:10px 12px;
     border:2px solid var(--ink);
     background:#f4faf8;
     font-family:'JetBrains Mono',monospace;
-    font-size:13px;
+    font-size:12px;
   }
   .search-row input::placeholder{color:#7d9490;}
   .add-btn{
@@ -194,21 +226,22 @@
     text-transform:uppercase; letter-spacing:.04em;
     background:var(--ink); color:var(--card);
     border:2px solid var(--ink);
-    padding:10px 16px;
+    padding:10px 14px;
     cursor:pointer;
   }
   .add-btn:hover{background:var(--card); color:var(--ink);}
 
-  /* ===== CARDS — index-card / carbon-copy sheet ===== */
-  .cards{display:flex; flex-direction:column; gap:22px;}
+  /* ===== CARDS ===== */
+  .cards{display:flex; flex-direction:column; gap:16px;}
   .card{
     position:relative;
     background:#f4faf8;
     border:2px solid var(--ink);
     padding-top:6px;
+    width:100%;
+    word-break:break-word;
   }
   .card::before{
-    /* perforation strip */
     content:"";
     display:block;
     height:8px;
@@ -220,9 +253,9 @@
   }
   .card::after{
     content:"MODELO";
-    position:absolute; top:38px; right:18px;
+    position:absolute; top:38px; right:12px;
     font-family:'JetBrains Mono',monospace;
-    font-size:34px; font-weight:700;
+    font-size:24px; font-weight:700;
     color:var(--card-color, var(--b1));
     opacity:.06;
     transform:rotate(-14deg);
@@ -231,14 +264,15 @@
   }
   .card-head{
     display:flex; justify-content:space-between; align-items:center;
-    gap:12px; flex-wrap:wrap;
-    padding:14px 18px 10px;
+    gap:10px; flex-wrap:wrap;
+    padding:12px 14px 8px;
     border-bottom:1px solid var(--card-line);
   }
   .card-head h3{
-    margin:0; font-size:14.5px; font-weight:800;
+    margin:0; font-size:13.5px; font-weight:800;
     color:var(--card-color, var(--b1));
     text-transform:uppercase; letter-spacing:.01em;
+    line-height:1.3;
   }
   .card-actions{display:flex; gap:6px;}
   .icon-btn{
@@ -254,28 +288,30 @@
   .icon-btn:hover{background:var(--card-color, var(--b1)); color:#f4faf8;}
   .icon-btn.copied{background:var(--card-color, var(--b1)); color:#f4faf8;}
 
-  .card-body{padding:16px 18px 18px; position:relative;}
+  .card-body{padding:14px; position:relative;}
   .tmpl-text{
     font-family:'Special Elite',monospace;
-    font-size:14px; line-height:1.85; color:var(--ink);
+    font-size:13px; line-height:1.65; color:var(--ink);
     white-space:pre-wrap;
   }
   .tmpl-text[contenteditable="true"]{
     outline:2px dashed var(--card-color,var(--b1));
-    outline-offset:6px;
+    outline-offset:4px;
     padding:4px;
     background:#f6fbf9;
   }
   .fill{
     background:none;
     border-bottom:2px dotted var(--field-red);
-    padding:0 4px;
+    padding:0 2px;
     font-family:'JetBrains Mono',monospace;
     font-weight:700;
     color:var(--field-red);
     cursor:text;
-    min-width:60px;
+    min-width:40px;
     display:inline-block;
+    max-width:100%;
+    word-break:break-word;
   }
   .fill:focus{background:#f7e6e4; outline:none; border-bottom-style:solid;}
   .fill:empty::before{
@@ -283,63 +319,60 @@
     color:#b3726c;
     font-weight:500;
     font-family:'JetBrains Mono',monospace;
-    font-size:11px;
+    font-size:10px;
     text-transform:uppercase;
   }
-  .card-note{
-    margin-top:14px; padding-top:10px; border-top:1px dashed var(--card-line);
-    font-family:'JetBrains Mono',monospace;
-    font-size:10.5px; color:var(--ink-soft);
-    text-transform:uppercase; letter-spacing:.03em;
-  }
 
-  .empty-state{
-    border:2px dashed var(--card-line);
-    padding:30px; text-align:center;
-    color:var(--ink-soft); font-size:13.5px;
-    font-family:'JetBrains Mono',monospace;
+  /* ===== HOW-TO VIEW ===== */
+  .howto-grid{display:grid; grid-template-columns:1fr; gap:16px;}
+  @media (min-width:700px){
+    .howto-grid{grid-template-columns:1fr 1fr; gap:0 32px;}
   }
-
-  /* ===== how-to view ===== */
-  .howto-grid{display:grid; grid-template-columns:1fr 1fr; gap:0 32px;}
-  @media (max-width:700px){.howto-grid{grid-template-columns:1fr;}}
   .step{
-    display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--card-line);
+    display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--card-line);
   }
   .step-num{
-    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:18px;
-    color:#f4faf8; background:var(--ink); width:32px;height:32px;
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:16px;
+    color:#f4faf8; background:var(--ink); width:28px;height:28px;
     display:flex; align-items:center; justify-content:center; flex:0 0 auto;
   }
-  .step h4{margin:0 0 4px; font-size:14px; text-transform:uppercase; letter-spacing:.02em;}
-  .step p{margin:0; font-size:12.5px; color:var(--ink-soft); line-height:1.55;}
+  .step h4{margin:0 0 4px; font-size:13px; text-transform:uppercase; letter-spacing:.02em;}
+  .step p{margin:0; font-size:12px; color:var(--ink-soft); line-height:1.5;}
   .checklist{
     background:var(--ink); color:var(--card);
-    padding:24px; margin-top:30px;
+    padding:16px; margin-top:20px;
     position:relative;
-    border-left:5px solid var(--stamp-red);
+    border-left:4px solid var(--stamp-red);
   }
   .checklist h4{
-    margin:0 0 14px; font-family:'JetBrains Mono',monospace; font-size:11.5px;
+    margin:0 0 12px; font-family:'JetBrains Mono',monospace; font-size:11px;
     text-transform:uppercase; letter-spacing:.1em; color:#7fd6b4;
   }
   .checklist ul{margin:0; padding-left:0; list-style:none;}
   .checklist li{
-    display:flex; gap:10px; margin-bottom:11px; font-size:13px; line-height:1.55;
+    display:flex; gap:8px; margin-bottom:10px; font-size:12px; line-height:1.5;
   }
   .checklist li::before{content:"✓"; color:#7fbfa8; font-weight:700; flex:0 0 auto;}
 
   footer{
-    text-align:center; padding:22px; color:var(--ink);
-    font-family:'JetBrains Mono',monospace; font-size:10px;
-    letter-spacing:.06em; text-transform:uppercase;
-    opacity:.65;
+    max-width:1080px;
+    width:100%;
+    margin:0 auto;
+    text-align:center; 
+    padding:12px 20px; 
+    color:var(--ink);
+    font-family:'JetBrains Mono',monospace; 
+    font-size:10px;
+    letter-spacing:.05em; 
+    text-transform:uppercase;
+    opacity:.75;
+    background:var(--kraft);
   }
 
   .toast{
-    position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(20px);
+    position:fixed; bottom:16px; left:50%; transform:translateX(-50%) translateY(20px);
     background:var(--ink); color:var(--card);
-    padding:10px 18px; font-size:12.5px;
+    padding:8px 14px; font-size:11.5px;
     font-family:'JetBrains Mono',monospace;
     opacity:0; pointer-events:none;
     transition:all .25s ease;
@@ -358,6 +391,7 @@
         <span>Governo do Estado de Minas Gerais</span>
         <span id="save-indicator">conteúdo editável — salvo neste dispositivo</span>
       </div>
+      <h1 class="title">Guia de Respostas Padrão</h1>
       <p class="subtitle">Este guia reúne modelos de respostas para as situações mais recorrentes no atendimento da Ouvidoria de Saúde. Os textos estão organizados de acordo com as diferentes etapas do tratamento de uma manifestação — desde os encaminhamentos iniciais até as respostas conclusivas, incluindo solicitações de complemento, comunicações intermediárias e devoluções. Para utilizar o guia, basta localizar a situação correspondente, preencher os campos indicados e, quando necessário, adaptar o texto às particularidades da manifestação. Os modelos podem ser editados e as alterações ficam salvas neste guia.
 </p>
     </div>
@@ -390,77 +424,76 @@ const DEFAULT_DATA = {
       isHowTo: true
     },
     {
-      id: "conceitos",
-      num: "00",
-      label: "Conceitos Básicos",
-      color: "var(--b0)",
-      dot: "#c9a227",
-      desc: "Definições e conceitos de referência para o atendimento da Ouvidoria de Saúde.",
-      cards: [
-        {
-          title: "Encaminhamentos",
-          text: `Do recebimento ao órgão responsável — primeira resposta enviada conforme o tipo de manifestação.`
-        },
-        {
-          title: "Complemento",
-          text: `Quando o relato precisa de mais detalhes para que a apuração seja possível.`
-        },
-        {
-          title: "Intermediária",
-          text: `Mantendo o cidadão informado sobre o andamento do processo.`
-        },
-        {
-          title: "Conclusiva",
-          text: `A resposta final — clara, fundamentada e dentro do prazo legal.`
-        },
-        {
-          title: "Devolução",
-          text: `Quando a resposta do órgão não é suficiente e a manifestação retorna para revisão.`
-        }
-      ]
-    },
-    {
       id: "b1",
       num: "01",
       label: "Encaminhamentos",
       color: "var(--b1)",
       dot: "#7fa3b8",
-      foot: "Mensagens de encaminhamento são utilizadas para remeter uma manifestação a um ponto de resposta ou outra ouvidoria responsável pela resposta administrativa final à manifestação.",
+      desc: "Do recebimento da manifestação ao encaminhamento para o órgão responsável.",
       cards: [
           {
-          title: "Encaminhamento: Solicitação, Reclamação, Sugestão, Elogio e Informação ",
-          text: `Prezado(a) Senhor(a),
-A {{OUVIDORIA|Ouvidoria de Saúde}} recebeu esta manifestação e encaminha para que seja providenciada resposta ao(à) manifestante, conforme a Lei nº 13.460/2017.
+          title: "Encaminhamento: Solicitação",
+          text: `A {{OUVIDORIA|Ouvidoria de Saúde}} recebeu esta manifestação e encaminha para que seja providenciada resposta ao(à) manifestante, conforme a Lei nº 13.460/2017.
 A resposta deve ser registrada em até 30 dias e redigida com clareza e linguagem acessível ao cidadão (art. 16 da lei).
-Levando em conta que todos têm direito à proteção de seus dados pessoais, advertimos que os dados do manifestante deverão ser usados estritamente para fins de análise da sua demanda, não podendo, em nenhuma hipótese, serem repassados a terceiros. (Lei 13.460/2017, art. 10, §7º).
+Os dados pessoais do(a) manifestante são sigilosos e só podem ser usados para fins de apuração (Lei 13.460/2017, art. 10, §7º).
 
 Atenciosamente,
-
-Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
-          title: "Encaminhamento: Denúncia ",
-          text: `Prezado(a) Senhor(a),
-A {{OUVIDORIA|Ouvidoria de Saúde}} recebeu esta manifestação e encaminha para que seja providenciada resposta ao(à) manifestante, conforme a Lei nº 13.460/2017.
+          title: "Encaminhamento: Denúncia",
+          text: `A {{OUVIDORIA|Ouvidoria de Saúde}} recebeu esta manifestação e encaminha para que seja providenciada resposta ao(à) manifestante, conforme a Lei nº 13.460/2017.
 A resposta deve ser registrada em até 30 dias e redigida com clareza e linguagem acessível ao cidadão (art. 16 da lei).
 Atenção: para denúncias, a resposta conclusiva precisa trazer o resultado do procedimento apuratório — não basta informar que a apuração foi iniciada (Decreto 49.053/2025, art. 11, §4º, inciso II).
-Levando em conta que todos têm direito à proteção de seus dados pessoais, advertimos que os dados do manifestante deverão ser usados estritamente para fins de análise da sua demanda, não podendo, em nenhuma hipótese, serem repassados a terceiros. (Lei 13.460/2017, art. 10, §7º).
+Os dados pessoais do(a) manifestante são sigilosos e só podem ser usados para fins de apuração — nunca repassados a terceiros (Lei 13.460/2017, art. 10, §7º).
 
 Atenciosamente,
-
-Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
-          title: "Encaminhamento: Comunicação de irregularidade ",
-          text: `Prezado(a) Senhor(a),
-A {{OUVIDORIA|Ouvidoria de Saúde}} recebeu esta manifestação e encaminha para que sejam tomadas as providências cabíveis, conforme a Lei nº 13.460/2017.
-A resposta a essa ouvidoria deverá ser redigida com clareza e linguagem acessível.
-Levando em conta que todos têm direito à proteção de seus dados pessoais, advertimos que os dados do manifestante deverão ser usados estritamente para fins de análise da sua demanda, não podendo, em nenhuma hipótese, serem repassados a terceiros. (Lei 13.460/2017, art. 10, §7º).
+          title: "Encaminhamento: Reclamação",
+          text: `A {{OUVIDORIA|Ouvidoria de Saúde}} recebeu esta manifestação e encaminha para que seja providenciada resposta ao(à) manifestante, conforme a Lei nº 13.460/2017.
+A resposta deve ser registrada em até 30 dias e redigida com clareza e linguagem acessível ao cidadão (art. 16 da lei).
+Para reclamações, a resposta conclusiva precisa trazer a decisão administrativa final sobre o caso (Decreto 49.053/2025, art. 11, §2º).
+Os dados pessoais do(a) manifestante são sigilosos e só podem ser usados para fins de apuração (Lei 13.460/2017, art. 10, §7º).
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
+        },
+        {
+          title: "Encaminhamento: Elogio",
+          text: `A {{OUVIDORIA|Ouvidoria de Saúde}} recebeu esta manifestação e encaminha para que seja providenciada resposta ao(à) manifestante, conforme a Lei nº 13.460/2017.
+A resposta deve ser registrada em até 30 dias e redigida com clareza e linguagem acessível ao cidadão (art. 16 da lei).
+Para elogios, a resposta conclusiva precisa confirmar que o servidor elogiado e sua chefia foram comunicados (Decreto 49.053/2025, art. 11, §5º).
+Os dados pessoais do(a) manifestante são sigilosos e só podem ser usados para fins de apuração (Lei 13.460/2017, art. 10, §7º).
+
+Atenciosamente,
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
+        },
+        {
+          title: "Encaminhamento: Sugestão",
+          text: `A {{OUVIDORIA|Ouvidoria de Saúde}} recebeu esta manifestação e encaminha para que seja providenciada resposta ao(à) manifestante, conforme a Lei nº 13.460/2017.
+A resposta deve ser registrada em até 30 dias e redigida com clareza e linguagem acessível ao cidadão (art. 16 da lei).
+Para sugestões, a resposta conclusiva precisa informar se a proposta poderá ou não ser adotada (Decreto 49.053/2025, art. 11, §3º).
+Os dados pessoais do(a) manifestante são sigilosos e só podem ser usados para fins de apuração (Lei 13.460/2017, art. 10, §7º).
+
+Atenciosamente,
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
+        },
+        {
+          title: "Encaminhamento interno: por competência (outra Ouvidoria Temática)",
+          text: `Encaminhamos a presente manifestação à Ouvidoria de {{OUVIDORIA TEMÁTICA}}, pois, após análise preliminar, verificamos se tratar de tema afeto às competências daquela unidade.
+
+Atenciosamente,
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
+        },
+        {
+          title: "Encaminhamento interno: por desdobramento (mais de um tema)",
+          text: `A presente manifestação abrange, ao mesmo tempo, temas de competência desta {{OUVIDORIA|Ouvidoria de Saúde}} e da Ouvidoria de {{OUVIDORIA TEMÁTICA}}.
+Diante disso, realizamos o desdobramento e encaminhamos a manifestação para que sejam tomadas as providências cabíveis pela unidade competente.
+
+Atenciosamente,
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         }
       ]
     },
@@ -470,62 +503,62 @@ Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
       label: "Complemento",
       color: "var(--b2)",
       dot: "#7cbaa8",
-      foot: "Textos enviados ao(à) manifestante quando falta informação. Prazo para resposta do cidadão: 10 dias corridos.",
+      desc: "Textos enviados ao(à) manifestante quando falta informação. Prazo para resposta do cidadão: 10 dias corridos.",
       cards: [
         {
           title: "Complemento: Manifestação anônima que não é denúncia",
-          pedeDados: true,
-          text: `Prezado(a) Senhor(a),
-Obrigado por registrar sua manifestação. Sua participação é muito importante para melhorar os serviços do SUS/MG.
+          text: `Olá!
+Obrigado por registrar sua manifestação. Sua participação é muito importante para melhorar os serviços de saúde em Minas Gerais.
 Analisamos o seu registro e identificamos que se trata de uma {{TIPO: reclamação / solicitação / sugestão / elogio}}. Para esse tipo de manifestação, não é possível manter o anonimato — só denúncias podem ser feitas sem identificação.
 Por isso, pedimos que complemente seu registro em até 10 dias corridos com as seguintes informações:
 
-{{DADOS SOLICITADOS|Liste aqui os dados necessários no caso analisado*}}
+Nome completo, CPF e e-mail
 Qualquer outra informação que achar importante
 
 Não precisa abrir um novo registro — é só complementar este mesmo.
 Se não recebermos essas informações no prazo, a manifestação poderá ser encerrada (Lei Estadual 15.298/2004, art. 8º, §1º).
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Complemento: Informações insuficientes para apuração",
-          pedeDados: true,
           text: `Prezado(a) Senhor(a),
-Agradecemos sua participação para melhorar os serviços públicos do SUS/MG.
+Agradecemos sua participação para melhorar os serviços públicos do Estado.
 Após análise do seu registro, identificamos que faltam informações para que o órgão responsável possa investigar o caso. Por isso, pedimos que complemente sua manifestação em até 10 dias corridos com:
 
-{{DADOS SOLICITADOS|Liste aqui os dados necessários no caso analisado}}
+Nomes dos servidores envolvidos ou suas características físicas
+Local onde o fato aconteceu
+Data e horário
+
 Não precisa abrir um novo registro — é só complementar este mesmo. Caso as informações não sejam enviadas, a manifestação poderá ser encerrada (Lei Estadual 15.298/2004, art. 8º, §1º).
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Complemento: Autorização para compartilhar dados pessoais",
           text: `Prezado(a) Senhor(a),
-Agradecemos sua participação para melhorar os serviços do SUS/MG.
+Agradecemos sua participação para melhorar os serviços públicos do Estado.
 Após análise do seu registro, identificamos que será necessário compartilhar seus dados pessoais com o órgão responsável pela apuração. Por isso, pedimos que nos informe, em até 10 dias corridos, se você autoriza esse compartilhamento.
 Não precisa abrir um novo registro — é só complementar este mesmo. Caso a autorização não seja enviada, a manifestação poderá ser encerrada (Lei Estadual 15.298/2004, art. 8º, §1º).
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Complemento: Informações insuficientes + autorização de dados (os dois juntos)",
-          pedeDados: true,
           text: `Prezado(a) Senhor(a),
-Agradecemos sua participação para melhorar os serviços do SUS/MG.
+Agradecemos sua participação para melhorar os serviços públicos do Estado.
 Após análise do seu registro, identificamos duas situações: faltam informações para apurar os fatos e será necessário compartilhar seus dados pessoais com o órgão responsável. Por isso, pedimos que, em até 10 dias corridos:
 
-Informe se autoriza o compartilhamento dos seus dados pessoais.
-Envie as informações necessárias: {{DADOS SOLICITADOS|Liste aqui os dados necessários no caso analisado*}}
+Informe se autoriza o compartilhamento dos seus dados pessoais
+Envie as seguintes informações: nomes ou características dos servidores envolvidos; local; data e horário
 
 Não precisa abrir um novo registro — é só complementar este mesmo. Caso não sejam enviados, a manifestação poderá ser encerrada (Lei Estadual 15.298/2004, art. 8º, §1º).
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         }
       ]
     },
@@ -535,52 +568,57 @@ Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
       label: "Intermediária",
       color: "var(--b3)",
       dot: "#8fc49a",
-      foot: "Explicação de quando usar a intermediária",
+      desc: "Mantendo o cidadão informado sobre o processo.",
       cards: [
         {
           title: "Intermediária: Encaminhamento a município",
-          text: `Prezado(a) Senhor(a),
-Obrigado pelo seu registro e por contribuir com a melhoria do SUS/MG.
+          text: `Olá!
+Obrigado pelo seu registro e por contribuir com a melhoria dos serviços públicos de Minas Gerais.
 Após análise, identificamos que o assunto da sua manifestação é de responsabilidade do município de {{MUNICÍPIO}}.
 Por isso, sua manifestação será encaminhada para a ouvidoria desse município, que ficará responsável por te dar a resposta final.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Intermediária: Manifestação desdobrada",
-          text: `Prezado(a) Senhor(a),
-Recebemos sua manifestação e informamos que as providências que competem a esta {{OUVIDORIA|Ouvidoria de Saúde}} estão sendo realizadas.
+          text: `Recebemos sua manifestação e informamos que as providências que competem a esta {{OUVIDORIA|Ouvidoria de Saúde}} estão sendo realizadas.
 Identificamos que sua demanda abrange temas diferentes, motivo pelo qual a duplicamos, possibilitando o tratamento adequado por nossas equipes internas.
 Você pode acompanhar o andamento utilizando o protocolo e a senha recebidos no momento do registro.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
+        },
+        {
+          title: "Intermediária: Encaminhada para outra Ouvidoria Temática",
+          text: `Recebemos sua manifestação e informamos que as providências que competem a esta {{OUVIDORIA|Ouvidoria de Saúde}} estão sendo realizadas.
+Identificamos que sua demanda é de competência da Ouvidoria de {{OUVIDORIA TEMÁTICA}}. Para o tratamento adequado, encaminhamos a manifestação àquela equipe.
+Você pode acompanhar o andamento utilizando o protocolo e a senha recebidos no momento do registro.
+
+Atenciosamente,
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Intermediária: Manifestação identificada encaminhada ao órgão responsável (30 dias)",
-          text: `Prezado(a) Senhor(a),
-Recebemos sua manifestação e informamos que as providências que competem a esta {{OUVIDORIA|Ouvidoria de Saúde}} estão sendo realizadas.
+          text: `Recebemos sua manifestação e informamos que as providências que competem a esta {{OUVIDORIA|Ouvidoria de Saúde}} estão sendo realizadas.
 Sua demanda foi encaminhada ao órgão/entidade {{ÓRGÃO}}, competente para apuração e adoção das medidas cabíveis. O prazo para resposta é de 30 dias, prorrogáveis por igual período.
 Seus dados pessoais são tratados de forma adequada e transparente, conforme a Lei Geral de Proteção de Dados. Saiba mais em ouvidoriageral.mg.gov.br/politicas-de-privacidade.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Intermediária: Registro anônimo encaminhado ao órgão responsável (comunicação, sem resposta conclusiva)",
-          text: `Prezado(a) Senhor(a),
-Recebemos sua manifestação e informamos que as providências que competem a esta {{OUVIDORIA|Ouvidoria de Saúde}} estão sendo realizadas.
+          text: `Recebemos sua manifestação e informamos que as providências que competem a esta {{OUVIDORIA|Ouvidoria de Saúde}} estão sendo realizadas.
 Conforme o art. 6º, §4º do Decreto Estadual 49.053/2025, registros feitos sem identificação são considerados comunicações — por isso, não geram resposta conclusiva.
 Se desejar receber uma resposta, sugerimos que faça um novo registro de forma identificada, com ou sem restrição de sigilo.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Intermediária: Registrada por e-mail/SEI (protocolo e senha)",
-          text: `Prezado(a) Senhor(a),
-Recebemos sua manifestação e a registramos em nosso sistema eletrônico sob o protocolo {{PROTOCOLO}}.
+          text: `Recebemos sua manifestação e a registramos em nosso sistema eletrônico sob o protocolo {{PROTOCOLO}}.
 Você receberá por e-mail a senha para acompanhamento, disponível também pelos canais:
 
 Link recebido por e-mail, com protocolo e senha
@@ -589,35 +627,32 @@ Disque Ouvidoria: 162
 WhatsApp (Bel): 31 3915-2022
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Intermediária: Manifestação sobrestada (prazo suspenso)",
-          text: `Prezado(a) Senhor(a),
-Informamos que o órgão/entidade {{ÓRGÃO}} solicitou a suspensão do prazo para resposta desta manifestação. O pedido foi deferido, nos termos do art. 18 do Decreto Estadual 49.053/2025, para viabilizar os procedimentos apuratórios necessários.
+          text: `Informamos que o órgão/entidade {{ÓRGÃO}} solicitou a suspensão do prazo para resposta desta manifestação. O pedido foi deferido, nos termos do art. 18 do Decreto Estadual 49.053/2025, para viabilizar os procedimentos apuratórios necessários.
 Você terá acesso à resposta conclusiva assim que os procedimentos forem concluídos pelo órgão responsável.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Intermediária: Recusa do pedido de desistência",
-          text: `Prezado(a) Senhor(a),
-Recebemos seu pedido de encerramento da manifestação nº {{PROTOCOLO}}, por desistência.
+          text: `Recebemos seu pedido de encerramento da manifestação nº {{PROTOCOLO}}, por desistência.
 Após análise, concluímos que o fato relatado possui interesse público e, portanto, deve ser apurado — é dever da autoridade pública que toma conhecimento de irregularidade adotar providências, sob pena de responsabilização.
 Diante disso, não é possível acatar o pedido de desistência, e a manifestação permanecerá em andamento.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Intermediária: Acatamento de pedido de reabertura",
-          text: `Prezado(a) Senhor(a),
-Recebemos sua solicitação de reabertura da manifestação nº {{PROTOCOLO}} e, após análise, a aceitamos.
+          text: `Recebemos sua solicitação de reabertura da manifestação nº {{PROTOCOLO}} e, após análise, a aceitamos.
 Sua demanda foi encaminhada ao órgão/entidade {{ÓRGÃO}}, competente para apuração e adoção das medidas cabíveis. O prazo para resposta é de 30 dias, prorrogáveis por igual período.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         }
       ]
     },
@@ -627,12 +662,12 @@ Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
       label: "Conclusivas",
       color: "var(--b4)",
       dot: "#7fc99a",
-      foot: "As respostas conclusivas devem ser enviadas quando não houver mais trâmites a serem feitos pela Ouvidoria que está respondendo.",
+      desc: "A resposta final — clara e no prazo.",
       cards: [
         {
           title: "Conclusiva: Registro no MGOUV (veio do OuvidorSUS) — identificada ou sigilosa",
-          text: `Prezado(a) senhor(a),
-Obrigado pelo seu registro e por contribuir com a melhoria do SUS/MG.
+          text: `Olá!
+Obrigado pelo seu registro e por contribuir com a melhoria dos serviços públicos.
 Sua manifestação foi registrada no sistema MGOUV e encaminhada para a Ouvidoria de {{ÓRGÃO}}, que é responsável pelo tema que você relatou.
 Para acompanhar o andamento, use o protocolo e a senha que você recebeu por e-mail no momento do registro. Você pode acompanhar pelo:
 
@@ -640,23 +675,15 @@ Disque-Ouvidoria: 162
 Site: ouvidoriageral.mg.gov.br
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Denúncia",
-          text: `Prezado (a) Senhor (a),
-Agradecemos e ressaltamos a importância de sua participação para auxiliar o Governo de Minas no aperfeiçoamento dos serviços públicos.
-Encaminhamos sua manifestação {{ÓRGÃO|Nome do órgão}}, que nos informou:
-"{{CONTEÚDO DA INFORMAÇÃO RECEBIDA|Conteúdo da informação recebida}}".
-Pelo exposto, tendo em vista as informações apresentadas e esgotadas as competências da ouvidoria de saúde, informamos que a presente manifestação será encerrada.
-
-Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+          text: `[Em construção — cole aqui o texto padrão de resposta conclusiva para denúncias assim que estiver pronto. Use o lápis no canto do cartão para editar e salvar.]`
         },
         {
           title: "Conclusiva: Encerramento no Ouvidor SUS com registro no MGOUV — manifestações anônimas",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Sua manifestação foi registrada no sistema MGOUV e encaminhada para a Ouvidoria de {{ÓRGÃO}}, competente para receber, analisar, encaminhar e acompanhar o tema relatado.
 Você pode acompanhar o andamento pelo Disque-Ouvidoria 162 ou pelo site ouvidoriageral.mg.gov.br, usando os dados abaixo:
 
@@ -664,12 +691,11 @@ Protocolo nº {{PROTOCOLO}}
 Senha do registro nº {{SENHA}}
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento no MGOUV com registro no Ouvidor SUS — identificadas ou sigilosas",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Sua manifestação foi registrada no sistema OuvidorSUS e será encaminhada ao órgão responsável pela resposta.
 Você pode acompanhar o andamento pelo Disque-Saúde 136 ou pelos links:
 ouvidoriageral.mg.gov.br/ouvidorias-especializadas/ouvidoria-de-saude
@@ -677,12 +703,11 @@ ouvidor.saude.gov.br/public/form-web/consultar
 usando o protocolo e a senha recebidos por e-mail.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento no MGOUV com registro no Ouvidor SUS — anônimas",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Sua manifestação foi registrada no sistema OuvidorSUS e será encaminhada ao órgão responsável pela resposta.
 Você pode acompanhar o andamento pelo Disque-Saúde 136 ou pelos links:
 ouvidoriageral.mg.gov.br/ouvidorias-especializadas/ouvidoria-de-saude
@@ -693,64 +718,59 @@ Protocolo nº {{PROTOCOLO}}
 Senha do registro nº {{SENHA}}
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Manifestação apurada pelo órgão responsável (denúncia/reclamação/solicitação)",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação, ela é essencial para melhorar os serviços do SUS/MG.
+          text: `{{FRASE DE ABERTURA — para reclamações/solicitações, quando couber: "Lamentamos a situação relatada e agradecemos por compartilhar sua experiência conosco."}}
+Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Encaminhamos sua manifestação ao órgão/entidade {{ÓRGÃO}}, que nos informou: {{RESPOSTA DO ÓRGÃO}}.
 Com base nessas informações, e esgotadas as competências desta {{OUVIDORIA|Ouvidoria de Saúde}}, a presente manifestação será encerrada.
 Estamos à disposição para esclarecimentos e pedimos, por gentileza, que responda à nossa pesquisa de satisfação.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento de elogio identificado e encaminhado ao órgão",
-          text: `Prezado(a) Senhor(a),
-Agradecemos o seu elogio! É muito gratificante saber que o trabalho do Governo de Minas teve um impacto positivo para você.
+          text: `Agradecemos o seu elogio! É muito gratificante saber que o trabalho do Governo de Minas teve um impacto positivo para você.
 Seu elogio à atuação de {{SERVIDOR/ÓRGÃO}} foi recebido e encaminhado aos responsáveis, para conhecimento e providências cabíveis.
 Esgotadas as competências desta {{OUVIDORIA|Ouvidoria de Saúde}}, a presente manifestação será encerrada.
 Estamos à disposição para esclarecimentos e pedimos, por gentileza, que responda à nossa pesquisa de satisfação.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento de registro anônimo (comunicação já analisada)",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Conforme o art. 6º, §4º do Decreto Estadual 49.053/2025, registros sem identificação são tratados como comunicações e não geram resposta conclusiva.
 Informamos que a análise e as providências pertinentes já foram adotadas por esta Ouvidoria. Esgotadas as competências desta {{OUVIDORIA|Ouvidoria de Saúde}}, a presente comunicação será encerrada.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento de registro anônimo que precisa de identificação",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Verificamos que, para a devida apuração dos fatos narrados, é necessário compartilhar seus dados pessoais com o órgão responsável. Por isso, sugerimos que realize um novo registro, de forma identificada, com ou sem restrição de sigilo.
 Esgotadas as competências desta {{OUVIDORIA|Ouvidoria de Saúde}}, a presente comunicação será encerrada.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento por duplicidade",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Identificamos manifestação idêntica a esta, registrada sob o protocolo {{PROTOCOLO}}.
 Por esse motivo, esta manifestação será encerrada — o acompanhamento deve ser feito pelo protocolo e senha já fornecidos. Em caso de dúvidas, ligue para o Disque-Ouvidoria 162.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento por informações insuficientes / falta de complemento",
-          text: `Prezado(a) Senhor(a),
-Após análise do seu registro, identificamos que faltavam informações suficientes para a devida apuração. Solicitamos a complementação em até 10 dias corridos, mas não houve retorno.
+          text: `Após análise do seu registro, identificamos que faltavam informações suficientes para a devida apuração. Solicitamos a complementação em até 10 dias corridos, mas não houve retorno.
 Diante disso, a manifestação será encerrada, conforme o art. 8º, §1º da Lei Estadual 15.298/2004.
 Se desejar, você pode registrar uma nova manifestação, incluindo as informações necessárias, pelos canais:
 
@@ -760,12 +780,11 @@ Aplicativo MGApp
 WhatsApp (Bel): 31 3915-2022
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento por falta de autorização de compartilhamento de dados",
-          text: `Prezado(a) Senhor(a),
-Após análise da sua manifestação, identificamos a necessidade de compartilhar seus dados pessoais com o órgão responsável pela apuração. Solicitamos sua autorização em até 10 dias corridos, mas não houve retorno.
+          text: `Após análise da sua manifestação, identificamos a necessidade de compartilhar seus dados pessoais com o órgão responsável pela apuração. Solicitamos sua autorização em até 10 dias corridos, mas não houve retorno.
 Diante disso, a manifestação será encerrada, conforme o art. 8º, §1º da Lei Estadual 15.298/2004.
 Se desejar, você pode registrar uma nova manifestação autorizando o compartilhamento, pelos canais:
 
@@ -775,12 +794,11 @@ Aplicativo MGApp
 WhatsApp (Bel): 31 3915-2022
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento por desistência do manifestante",
-          text: `Prezado(a) Senhor(a),
-Informamos que a presente manifestação será encerrada, em razão do seu pedido de desistência recebido em {{DATA}}, cuja cópia consta anexada ao registro.
+          text: `Informamos que a presente manifestação será encerrada, em razão do seu pedido de desistência recebido em {{DATA}}, cuja cópia consta anexada ao registro.
 Permanecemos à disposição pelos canais:
 
 Site da OGE: ouvidoriageral.mg.gov.br
@@ -791,12 +809,11 @@ WhatsApp (Bel): 31 3915-2022
 Se puder, responda nossa pesquisa de satisfação — sua opinião nos ajuda a melhorar.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento por indeferimento de pedido de reabertura",
-          text: `Prezado(a) Senhor(a),
-Após análise dos fatos narrados, não identificamos motivos que justifiquem a reabertura da manifestação, pois {{MOTIVO}}.
+          text: `Após análise dos fatos narrados, não identificamos motivos que justifiquem a reabertura da manifestação, pois {{MOTIVO}}.
 Se desejar, você pode registrar uma nova manifestação incluindo {{INFORMAÇÃO NECESSÁRIA}}, pelos canais:
 
 Site da OGE: ouvidoriageral.mg.gov.br
@@ -805,39 +822,36 @@ Aplicativo MGApp
 WhatsApp (Bel): 31 3915-2022
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento de manifestação reaberta",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços do SUS/MG.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Seu pedido de reabertura foi analisado e encaminhado ao órgão competente {{ÓRGÃO}}, que nos informou: {{RESPOSTA DO ÓRGÃO}}.
 Com base nessas informações, e esgotadas as competências desta {{OUVIDORIA|Ouvidoria de Saúde}}, esta manifestação será encerrada.
 Estamos à disposição para esclarecimentos e pedimos, por gentileza, que responda à nossa pesquisa de satisfação.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Encerramento por desrespeito aos deveres do usuário",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços do SUS/MG.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Recebemos seu contato solicitando {{ASSUNTO}}. Esclarecemos que, conforme o art. 8º da Lei 13.460/2017, é dever do usuário utilizar os serviços de forma respeitosa e de boa-fé.
 Para viabilizar a análise, pedimos que registre uma nova manifestação, com linguagem cordial e exposição objetiva dos fatos. Esta manifestação será encerrada.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         },
         {
           title: "Conclusiva: Pedido de Acesso à Informação (LAI) — fora da competência da Ouvidoria",
-          text: `Prezado(a) Senhor(a),
-Agradecemos sua participação — ela é essencial para melhorar os serviços do SUS/MG.
+          text: `Agradecemos sua participação — ela é essencial para melhorar os serviços de saúde em Minas Gerais.
 Verificamos que sua manifestação é, na verdade, um pedido de acesso à informação, regulado pela Lei Federal 12.527/2011. Para esse tipo de solicitação, o canal oficial é o e-SIC.
 Você pode fazer seu pedido em transparencia.mg.gov.br (aba "Acesso à Informação"), pelo site acessoainformacao.mg.gov.br, pelo telefone 155, ou em uma Unidade de Atendimento Integrado (UAI).
 Esgotadas as competências desta Ouvidoria, a presente manifestação será encerrada.
 
 Atenciosamente,
-Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
         }
       ]
     },
@@ -847,12 +861,25 @@ Ouvidoria {{NOME DA OUVIDORIA|Nome da sua Ouvidoria}}`
       label: "Devolução & Registros",
       color: "var(--b5)",
       dot: "#7fa8bf",
-      foot: "Devolução de respostas incompletas ao órgão e registros de contatos que não geram manifestação tramitável.",
+      desc: "Devolução de respostas incompletas ao órgão e registros de contatos que não geram manifestação tramitável.",
       cards: [
         {
+          title: "Devolução: Resposta parcial em denúncia (falta resultado apuratório)",
+          text: `Agradecemos o envio das informações sobre o andamento do processo.
+Conforme o art. 1º, §4º, incisos I e II do Decreto Estadual 49.053/2025, para denúncias a resposta é:
+
+Parcial: informa o encaminhamento ao órgão apuratório, os procedimentos adotados e/ou o número que identifica a denúncia junto ao órgão, ou seu arquivamento
+Conclusiva: traz o resultado do procedimento administrativo apuratório
+
+A resposta enviada é parcial, pois informa apenas {{RESUMO DA RESPOSTA PARCIAL}}.
+Devolvemos o expediente para que seja emitida a resposta conclusiva assim que o processo for encerrado.
+
+Atenciosamente,
+{{OUVIDORIA|Ouvidoria de Saúde/OGE-MG}}`
+        },
+        {
           title: "Registro: Atendimento presencial sem registro de manifestação",
-          text: `Prezado(a) Senhor(a),
-          Na data {{DATA}}, recebemos presencialmente, na {{OUVIDORIA|Ouvidoria de Saúde}}, o(a) usuário(a) relatando {{RELATO}}.
+          text: `Na data {{DATA}}, recebemos presencialmente, na {{OUVIDORIA|Ouvidoria de Saúde}}, o(a) usuário(a) relatando {{RELATO}}.
 Pelo motivo {{MOTIVO}}, não houve registro de manifestação referente a este atendimento.`
         }
       ]
@@ -934,17 +961,10 @@ function renderMain(){
   head.className = "block-head";
   head.style.setProperty("--block-color", block.color);
   head.innerHTML = `
-  <h2><span class="block-num">${block.num}</span> ${block.label}</h2>
-  ${block.desc ? `<p class="block-desc">${block.desc}</p>` : ""}
-`;
+    <h2><span class="block-num">${block.num}</span> ${block.label}</h2>
+    <p class="block-desc">${block.desc}</p>
+  `;
   view.appendChild(head);
-
-  if(block.foot){
-    const foot = document.createElement("p");
-    foot.className = "block-foot";
-    foot.textContent = block.foot;
-    view.appendChild(foot);
-  }
 
   const searchRow = document.createElement("div");
   searchRow.className = "search-row";
@@ -1013,17 +1033,13 @@ function renderCard(block, card, idx){
   textDiv.innerHTML = renderTemplateHTML(card.text);
   body.appendChild(textDiv);
 
-const hasFields = /\{\{.*?\}\}/.test(card.text);
-const note = document.createElement("div");
-note.className = "card-note";
-let noteHtml = hasFields
-  ? "Preencha os campos sublinhados de vermelho antes de copiar."
-  : "Sem campos de preenchimento — pronto para copiar.";
-if(card.pedeDados){
-  noteHtml += "<br>* Devem ser solicitados apenas os dados estritamente necessários para o andamento da manifestação.";
-}
-note.innerHTML = noteHtml;
-body.appendChild(note);
+  const hasFields = /\{\{.*?\}\}/.test(card.text);
+  const note = document.createElement("div");
+  note.className = "card-note";
+  note.textContent = hasFields
+    ? "Preencha os campos sublinhados antes de copiar."
+    : "Sem campos de preenchimento — pronto para copiar.";
+  body.appendChild(note);
 
   el.appendChild(body);
 
@@ -1115,6 +1131,15 @@ function renderHowTo(){
     <div class="block-head">
       <h2>Como utilizar este guia</h2>
       <p class="block-desc">Navegue pelas abas acima, na ordem do fluxo de uma manifestação.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr; gap:16px;" class="howto-grid-fixed">
+      <div style="display:grid; grid-template-columns:1fr; gap:16px;">
+        <div class="step"><div class="step-num">1</div><div><h4>Encaminhamentos</h4><p>Do recebimento ao órgão responsável — primeira resposta enviada conforme o tipo de manifestação.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div><h4>Complemento</h4><p>Quando o relato precisa de mais detalhes para que a apuração seja possível.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div><h4>Intermediária</h4><p>Mantendo o cidadão informado sobre o andamento do processo.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div><h4>Conclusiva</h4><p>A resposta final — clara, fundamentada e dentro do prazo legal.</p></div></div>
+        <div class="step"><div class="step-num">5</div><div><h4>Devolução</h4><p>Quando a resposta do órgão não é suficiente e a manifestação retorna para revisão.</p></div></div>
+      </div>
     </div>
     <div class="checklist">
       <h4>Antes de enviar, lembre sempre</h4>

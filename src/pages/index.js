@@ -13,14 +13,13 @@ import InfoCard from '@site/src/components/InfoCard';
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    /* Reduzi o padding vertical aqui com inline style para ser rápido, 
-       mas o ideal é ajustar no index.module.css */
     <header className={clsx('hero hero--primary', styles.heroBanner, 'text--center')} style={{padding: '2rem 1rem'}}>
       <div className="container">
-        <Heading as="h1" className="hero__title" style={{fontSize: '2.5rem'}}>
+        {/* Título responsivo com clamp para não ficar gigante no mobile */}
+        <Heading as="h1" className="hero__title" style={{fontSize: 'clamp(1.6rem, 5vw, 2.5rem)', lineHeight: '1.2'}}>
           {siteConfig.title}
         </Heading>
-        {siteConfig.tagline && <p className="hero__subtitle">{siteConfig.tagline}</p>}
+        {siteConfig.tagline && <p className="hero__subtitle" style={{fontSize: 'clamp(0.9rem, 2vw, 1.2rem)', marginTop: '0.5rem'}}>{siteConfig.tagline}</p>}
       </div>
     </header>
   );
@@ -37,31 +36,29 @@ export default function Home() {
       <main>
         <div className="container margin-vert--lg">
           
-          {/* SEÇÃO LADO A LADO: TEXTO E VÍDEO */}
-          <div className="row" style={{ alignItems: 'center'}}>
-            
-             
-              <p>
+          {/* SEÇÃO DE TEXTO COM ESPAÇAMENTO (RESPIRO EM BRANCO) */}
+          <div className="row" style={{ alignItems: 'center', marginBottom: '2.5rem', marginTop: '1rem' }}>
+            <div className="col col--8 col--offset-2 text--center">
+              <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--ifm-color-content-secondary)' }}>
                 É responsável por receber reclamações, denúncias e sugestões, acompanhando o tratamento da manifestação até a decisão final. Aproxima os usuários dos serviços através de atendimento presencial e móvel.
               </p>
-            
-            
-            
+            </div>
           </div>
 
-          {/* SEÇÃO: SUBMENUS (CARDS) - Agora aparecem logo após o impacto inicial */}
-          <section>
+          {/* SEÇÃO: SUBMENUS (CARDS) */}
+          <section style={{ marginBottom: '3rem' }}>
             <Heading as="h3" style={{ textAlign: 'center', marginBottom: '1.5rem' }}></Heading>
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', /* Responsivo: quebra linha se a tela for pequena */
-              gap: '15px',
+              /* Garante 2 colunas no mobile e expande automaticamente no PC */
+              gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+              gap: '12px',
               alignItems: 'stretch',
             }}>
               <InfoCard
                 iconName="mdi:pill"
                 title="Material de apoio"
-                description="Base legal, contexto, documentos, legislação,  paineis e relatórios"
+                description="Base legal, contexto, documentos, legislação, paineis e relatórios"
                 link="/seos/docs/SEOS/Base-Legal"
                 linkText="Acessar"
               />
