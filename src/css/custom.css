@@ -86,3 +86,22 @@
 div > .link-row-item:last-child {
   border-bottom: none !important;
 }
+
+/* Ajustes específicos para o rodapé no telemóvel */
+@media screen and (max-width: 768px) {
+  .footer {
+    text-align: center;
+    padding: 24px 16px !important;
+  }
+  
+  .footer__logo {
+    max-width: 110px !important; /* Reduz o tamanho do logótipo circular */
+    margin: 0 auto 12px auto !important;
+  }
+  
+  .footer__copyright {
+    font-size: 0.8rem !important;
+    line-height: 1.4;
+    color: var(--ifm-footer-color);
+  }
+}
