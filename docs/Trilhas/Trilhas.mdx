@@ -1,0 +1,41 @@
+---
+sidebar_position: 4
+hide_title: true
+---
+<div className="trilhas-iframe-container">
+  <iframe 
+    src="/seos/trilhas.html" 
+    title="Trilhas de Capacitação"
+  />
+</div>
+
+<style>{`
+  .trilhas-iframe-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+  }
+
+  .trilhas-iframe-container iframe {
+    width: 100%;
+    height: 1400px;
+    border: none;
+    display: block;
+  }
+
+  /* Ajuste específico para dispositivos móveis para eliminar o espaço em branco */
+  @media screen and (max-width: 768px) {
+    .trilhas-iframe-container {
+      width: 100%;
+      height: 800px; /* Altura menor e exata para o mobile escalado */
+    }
+    
+    .trilhas-iframe-container iframe {
+      width: 1200px; 
+      height: 3000px;
+      transform: scale(0.29);
+      transform-origin: top left;
+    }
+  }
+`}</style>

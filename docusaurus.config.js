@@ -75,7 +75,7 @@ const config = {
             position: 'left',
             label: 'Menu Principal',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/docs/Trilhas', label: 'Trilhas de aprendizagem', position: 'left'},
           {
             type: 'search',
             position: 'right',

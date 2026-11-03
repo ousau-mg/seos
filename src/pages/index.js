@@ -73,7 +73,7 @@ export default function Home() {
                 iconName="pinhead:treasure-map"
                 title="Trilhas de aprendizagem"
                 description="Capacitações"
-                link="/seos/docs/Guia_Respostas"
+                link="/seos/docs/Trilhas"
                 linkText="Acessar"
               />
               <InfoCard

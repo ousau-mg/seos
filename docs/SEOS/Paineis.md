@@ -138,37 +138,112 @@ import Heading from '@theme/Heading';
 
 ---
 
-## Trimestrais
+## Relatórios
 
-<Accordion title="Trimestre 2025_4">
-  <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
-    Aguardando publicação dos documentos.
-  </p>
-  
+### Trimestrais
+
+<Accordion title="2026">
+   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <LinkRow 
+      tema="1° Relatório trimestral 2026" 
+      desc="Relatório 1º Trimestre 2026" 
+      url="/seos/img/1° Relatório trimestral 2026.pdf" 
+    />
+    <LinkRow 
+      tema="2° Relatório trimestral 2026" 
+      desc="Relatório 2º Trimestre 2026" 
+      url="/seos/img/2° Relatório trimestral 2026.pdf" 
+    />
+  </div>
 </Accordion>
 
-<Accordion title="Trimestre 2025_3">
-  <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
-    Aguardando publicação dos documentos.
-  </p>
+
+<Accordion title="2025">
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <LinkRow 
+      tema="1° Relatório trimestral 2025" 
+      desc="Relatório 1º Trimestre 2025" 
+      url="/seos/img/1° Relatório trimestral 2025.pdf" 
+    />
+    <LinkRow 
+      tema="2° Relatório trimestral 2025" 
+      desc="Relatório 2º Trimestre 2025" 
+      url="/seos/img/2° Relatório trimestral 2025.pdf" 
+    />
+    <LinkRow 
+      tema="3° Relatório trimestral 2025" 
+      desc="Relatório 3º Trimestre 2025" 
+      url="/seos/img/3° Relatório trimestral 2025.pdf" 
+    />
+    <LinkRow 
+      tema="4° Relatório trimestral 2025" 
+      desc="Relatório 4º Trimestre 2025"
+      url="/seos/img/4° Relatório Trimestral 2025.pdf" 
+    />
+  </div>
+</Accordion>
+<Accordion title="2024">
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <LinkRow 
+      tema="1° Relatório trimestral 2024" 
+      desc="Relatório 1º Trimestre 2024" 
+      url="/seos/img/1° Relatório trimestral 2024.pdf" 
+    />
+    <LinkRow 
+      tema="2° Relatório trimestral 2024" 
+      desc="Relatório 2º Trimestre 2025" 
+      url="/seos/img/2° Relatório trimestral 2024.pdf" 
+    />
+    <LinkRow 
+      tema="3° Relatório trimestral 2024" 
+      desc="Relatório 3º Trimestre 2024" 
+      url="/seos/img/3º Relatório Trimestral 2024.pdf" 
+    />
+    <LinkRow 
+      tema="4° Relatório trimestral 2024" 
+      desc="Relatório 4º Trimestre 2024"
+      url="/seos/img/4º Relatório Trimestral 2024.pdf" 
+    />
+  </div>
 </Accordion>
 
-<Accordion title="Trimestre 2025_2">
-  <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
-    Aguardando publicação dos documentos.
-  </p>
-</Accordion>
+### Anuais
 
-<Accordion title="Trimestre 2025_1">
-  <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
-    Aguardando publicação dos documentos.
-  </p>
+<Accordion title="2025">
+   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <LinkRow 
+      tema="Relatório Anual 2025" 
+      desc="Relatório Anual 2025" 
+      url="/seos/img/Relatório Anual 2025.pdf" 
+    />
+    
+  </div>
 </Accordion>
+<Accordion title="2024">
+   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+<LinkRow 
+      tema="Relatório Anual 2024" 
+      desc="Relatório Anual 2024" 
+      url="/seos/img/Relatório Anual 2024.pdf" 
+    />
+    </div>
+    </Accordion>
+
+
+
 
 ---
 
-## Síntese
+## Indicadores Programação Anual de Saúde
 
-- **Nossas metas**: Descrição detalhada das metas estabelecidas.
-- **Principais avanços**: Nossos principais marcos no último ano.
-- **Objetivos**: Metas para o próximo ciclo anual.
+<Accordion title="PAS_2026_Indicador 77">
+     <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
+    Aguardando publicação dos documentos.
+  </p>
+</Accordion>
+
+<Accordion title="PAS_2026_Indicador 78">
+     <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
+    Aguardando publicação dos documentos.
+  </p>
+</Accordion>
