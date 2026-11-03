@@ -141,26 +141,10 @@ import Heading from '@theme/Heading';
 ## Trimestrais
 
 <Accordion title="Trimestre 2025_4">
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-    <LinkRow 
-      tema="RELATÓRIO" 
-      fonte="SES" 
-      desc="Relatório OUSAU 4º Trimestre 2025 - SES" 
-      url="/seos/img/Relatório-OUSAU-4o-trim_25_SES.pdf" 
-    />
-    <LinkRow 
-      tema="RELATÓRIO" 
-      fonte="FHEMIG" 
-      desc="Relatório OUSAU 4º Trimestre 2025 - FHEMIG" 
-      url="/seos/img/Relatório-OUSAU-4trim_25-FHEMIG.pdf" 
-    />
-    <LinkRow 
-      tema="RELATÓRIO" 
-      fonte="HEMOMINAS" 
-      desc="Relatório OUSAU 4º Trimestre 2025 - SES" 
-      url="/seos/img/Relatório-OUSAU-4o-trim_25-HEMOMINAS.pdf" 
-    />
-  </div>
+  <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
+    Aguardando publicação dos documentos.
+  </p>
+  
 </Accordion>
 
 <Accordion title="Trimestre 2025_3">

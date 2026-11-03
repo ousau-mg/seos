@@ -70,10 +70,17 @@ export default function Home() {
                 linkText="Acessar"
               />
               <InfoCard
-                iconName="mdi:book-open-variant"
-                title="Agenda e capacitações"
-                description="Apresentações, Capacitações e Eventos"
-                link="/seos/docs/Agenda"
+                iconName="pinhead:treasure-map"
+                title="Trilhas de aprendizagem"
+                description="Capacitações"
+                link="/seos/docs/Guia_Respostas"
+                linkText="Acessar"
+              />
+              <InfoCard
+                iconName="andrsrxn:file-paper-clip"
+                title="Respostas padrão"
+                description="Guia com as principais respostas padrão"
+                link="/seos/docs/Guia_Respostas"
                 linkText="Acessar"
               />
               <InfoCard
@@ -88,13 +95,6 @@ export default function Home() {
                 title="Canais de Atendimento"
                 description="Principais canais de atendimento da SEOS"
                 link="/seos/docs/Canais_Atendimento"
-                linkText="Acessar"
-              />
-              <InfoCard
-                iconName="andrsrxn:file-paper-clip"
-                title="Respostas padrão"
-                description="Guia com as principais respostas padrão"
-                link="/seos/docs/Guia_Respostas"
                 linkText="Acessar"
               />
             </div>
