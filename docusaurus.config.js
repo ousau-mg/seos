@@ -20,6 +20,13 @@ const config = {
     defaultLocale: 'pt-BR',
     locales: ['pt-BR'],
   },
+ // Carrega o Tally em todas as páginas do site
+    scripts: [
+    {
+      src: 'https://tally.so/widgets/embed.js',
+      async: true,
+    },
+  ],
 
   presets: [
     [
@@ -68,32 +75,28 @@ const config = {
           alt: 'My Site Logo',
           src: 'img/LogoOge.png',
         },
-        items: [
+              items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Menu Principal',
-          },
-          {to: '/docs/Trilhas', label: 'Trilhas de aprendizagem', position: 'left'},
-          {
-            type: 'search',
-            position: 'right',
+            label: 'Base de Conhecimento',
           },
           {
-            href: 'https://github.com/ousau-mg/seos',
-            label: 'GitHub',
-            position: 'right',
+            to: '/Trilhas',
+            label: 'Trilhas de aprendizagem',
+            position: 'left', // <--- Troque 'center' por 'left' aqui
           },
+
         ],
       },
       footer: {
         style: 'dark',
         logo: {
           alt: 'Ouvidoria Geral MG',
-          src: 'img/OGEnovo.png',
+          src: 'img/LogoOge.png',
           href: 'https://www.ouvidoriageral.mg.gov.br/',
-          width: 160,
+          width: 100,
         },
         
         copyright: `Copyright © ${new Date().getFullYear()} SEOS. Built with Docusaurus.`,

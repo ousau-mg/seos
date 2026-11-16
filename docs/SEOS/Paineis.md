@@ -28,7 +28,7 @@ import Heading from '@theme/Heading';
   <div className="bi-mobile-scroll">
     <div className="bi-report-container">
       <iframe
-        src="https://app.powerbi.com/reportEmbed?reportId=a9b6ccf4-dc2e-43fe-b5d5-52aaeef2ebf4&autoAuth=true&ctid=53356986-688c-4cb9-ae3a-e8dbf6911a43"
+        src="https://app.powerbi.com/view?r=eyJrIjoiMmQwOWRhZWUtZmRmYS00NjJhLTkxZDQtYTQyZGJkNzcxZmFiIiwidCI6IjUzMzU2OTg2LTY4OGMtNGNiOS1hZTNhLWU4ZGJmNjkxMWE0MyJ9"
         title="BI Interno - OUSAU Regionais e Municípios"
         allowFullScreen
       />

@@ -1,12 +1,8 @@
 import clsx from 'clsx';
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import VideoPlayer from '@site/src/components/VideoPlayer';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-import GiscusComments from '../components/GiscusComments';
 import Feedback from '@site/src/components/Feedback';
 import InfoCard from '@site/src/components/InfoCard';
 
@@ -40,7 +36,7 @@ export default function Home() {
           <div className="row" style={{ alignItems: 'center', marginBottom: '2.5rem', marginTop: '1rem' }}>
             <div className="col col--8 col--offset-2 text--center">
               <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--ifm-color-content-secondary)' }}>
-                É responsável por receber reclamações, denúncias e sugestões, acompanhando o tratamento da manifestação até a decisão final. Aproxima os usuários dos serviços através de atendimento presencial e móvel.
+                Portal de apoio técnico e formação para a rede de ouvidorias do SUS em Minas Gerais. Selecione uma das áreas abaixo para acessar manuais, trilhas de aprendizagem, painéis gerenciais e canais de suporte.
               </p>
             </div>
           </div>
@@ -51,12 +47,12 @@ export default function Home() {
             <div style={{
               display: 'grid',
               /* Garante 2 colunas no mobile e expande automaticamente no PC */
-              gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
               gap: '12px',
               alignItems: 'stretch',
             }}>
               <InfoCard
-                iconName="mdi:pill"
+                iconName="akar-icons:book"
                 title="Material de apoio"
                 description="Base legal, contexto, documentos, legislação, paineis e relatórios"
                 link="/seos/docs/SEOS/Base-Legal"
@@ -72,7 +68,7 @@ export default function Home() {
               <InfoCard
                 iconName="pinhead:treasure-map"
                 title="Trilhas de aprendizagem"
-                description="Capacitações"
+                description="Capacitações para atuação nas ouvidorias do SUS."
                 link="/seos/docs/Trilhas"
                 linkText="Acessar"
               />
@@ -99,16 +95,7 @@ export default function Home() {
               />
             </div>
           </section>
-
-          {/* SEÇÃO: FEEDBACK E COMENTÁRIOS */}
-          <div className="row">
-            <div className="col col--12">
-               <Feedback />
-               <div className="margin-top--lg">
-                  <GiscusComments />
-               </div>
-            </div>
-          </div>
+          <Feedback />
         </div>
       </main>
     </Layout>
