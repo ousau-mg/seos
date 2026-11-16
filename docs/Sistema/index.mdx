@@ -1,35 +1,10 @@
 ---
 sidebar_position: 2
+sidebar_label: Sistema OuvidorSUS
+title: Sistema OuvidorSUS
 ---
 
-import InfoCard from '@site/src/components/InfoCard';
-import Heading from '@theme/Heading';
 
-# Sistema OuvidorSUS
+import {Redirect} from '@docusaurus/router';
 
-Conteúdos relacionados à adesão e operação do sistema OuvidorSUS
-
-<section style={{ marginTop: '1.5rem' }}>
-  <div style={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '12px',
-    alignItems: 'stretch',
-  }}>
-    <InfoCard 
-      iconName="mdi:account-plus-outline"
-      title="Adesão e inclusão"
-      description="Orientações para adesão de novos municípios e inclusão de usuários."
-      link="./Adesao-inclusao"
-      linkText="Ver detalhes"
-    />
-
-    <InfoCard 
-      iconName="mdi:play-circle-outline"
-      title="Operações e tutoriais"
-      description="Manuais e guias para operação do sistema."
-      link="./Operacoes-tutoriais"
-      linkText="Ver tutoriais"
-    />
-  </div>
-</section>
+<Redirect to="/seos/docs/Sistema/Adesao-inclusao" />

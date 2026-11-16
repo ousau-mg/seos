@@ -5,18 +5,24 @@ export default function Feedback() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://tally.so/widgets/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
+    // Evita carregar o script do Tally mais de uma vez
+    if (!document.querySelector('script[src="https://tally.so/widgets/embed.js"]')) {
+      const script = document.createElement('script');
+      script.src = "https://tally.so/widgets/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
   }, []);
 
   const openTally = () => {
-    Tally.openPopup('KYLGQK', {
-      layout: 'popover', 
-      width: 400,
-      hideTitle: true,
-    });
+    // Garante que o Tally já carregou antes de abrir o popup
+    if (typeof window !== 'undefined' && window.Tally) {
+      window.Tally.openPopup('KYLGQK', {
+        layout: 'popover', 
+        width: 400,
+        hideTitle: true,
+      });
+    }
   };
 
   if (!isVisible) return null;
@@ -24,13 +30,12 @@ export default function Feedback() {
   return (
     <>
       <style>{`
-        /* Ajustes exclusivos para telas menores (mobile) */
         @media screen and (max-width: 768px) {
           .feedback-widget-container {
             right: 10px !important;
             bottom: 20px !important;
             padding: 5px !important;
-            transform: scale(0.8); /* Reduz o tamanho geral em 20% no mobile */
+            transform: scale(0.8);
             transform-origin: bottom right;
           }
         }
@@ -51,7 +56,6 @@ export default function Feedback() {
         gap: '8px',
         border: '1px solid #ddd'
       }}>
-        {/* Botão de fechar (X) */}
         <button 
           onClick={() => setIsVisible(false)}
           style={{ 

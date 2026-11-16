@@ -49,9 +49,13 @@
 }
 
 .footer__logo {
-  border-radius: 100%;
-  aspect-ratio: 1 / 1; /* Garante que seja um círculo se a imagem for quadrada */
-  object-fit: cover;
+  max-height: none; /* Libera o tamanho definido no docusaurus.config.js */
+  object-fit: contain; /* Garante que a imagem inteira apareça sem cortes */
+}
+
+/* Oculta itens auxiliares do menu lateral em qualquer tamanho de tela */
+.hidden {
+  display: none !important;
 }
 
 /* ==========================================================================
@@ -87,21 +91,42 @@ div > .link-row-item:last-child {
   border-bottom: none !important;
 }
 
-/* Ajustes específicos para o rodapé no telemóvel */
+/* Ajustes específicos para o rodapé e paginação no telemóvel */
 @media screen and (max-width: 768px) {
   .footer {
     text-align: center;
-    padding: 24px 16px !important;
+    padding: 12px 12px 45px 12px !important;
   }
   
+  .footer__bottom {
+    margin-top: 0 !important;
+  }
+
   .footer__logo {
-    max-width: 110px !important; /* Reduz o tamanho do logótipo circular */
-    margin: 0 auto 12px auto !important;
+    max-width: 48px !important;
+    margin: 0 auto 6px auto !important;
   }
   
   .footer__copyright {
-    font-size: 0.8rem !important;
-    line-height: 1.4;
+    font-size: 0.72rem !important;
+    line-height: 1.3;
+    padding: 0 8px;
     color: var(--ifm-footer-color);
   }
+
+  /* Deixa os botões de Anterior e Próxima mais compactos no mobile */
+  .pagination-nav__link {
+    padding: 8px 10px !important;
+  }
+
+  .pagination-nav__sublabel {
+    font-size: 0.7rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  .pagination-nav__label {
+    font-size: 0.8rem !important;
+    line-height: 1.2 !important;
+  }
 }
+

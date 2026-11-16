@@ -23,7 +23,7 @@ import { LinkRow } from '@site/src/components/tabela';
     tema="CARTILHA" 
     fonte="RH" 
     desc="Cartilha Assédio Sexual"
-    url="/img/cartilha-assedio-sexual.pdf" 
+    url="/seos/img/cartilha-assedio-sexual.pdf" 
   />
 </div>
 
