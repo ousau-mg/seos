@@ -4,16 +4,16 @@ title: Guia de Respostas Padrão
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
-# Guia de Respostas Padrão
+import VideoPlayer from '@site/src/components/VideoPlayer';
 
 <div style={{ 
   width: '100%', 
-  maxWidth: '1080', 
+  maxWidth: '1080px', 
   height: '85vh', 
   border: '2px solid var(--ifm-color-emphasis-300)', 
   borderRadius: '8px', 
   marginTop: '16px',
+  marginBottom: '2.5rem',
   overflow: 'hidden' 
 }}>
   <iframe 
@@ -26,4 +26,16 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
     }} 
     title="Guia de Respostas Padrão"
   />
+</div>
+
+---
+<div style={{ textAlign: 'center' }}>
+## Como estruturar uma denúncia perfeita
+</div>
+
+<div style={{ textAlign: 'center', marginTop: '1rem' }}>
+  <p style={{ color: 'var(--ifm-color-content-secondary)', marginBottom: '1.5rem' }}>
+    Confira as orientações práticas para registrar e responder denúncias com clareza e completude no SUS.
+  </p>
+  <VideoPlayer url={useBaseUrl('/img/denuncia.mp4')} isLocal={true} />
 </div>

@@ -1,10 +1,12 @@
 import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 import Feedback from '@site/src/components/Feedback';
 import InfoCard from '@site/src/components/InfoCard';
+import VideoPlayer from '@site/src/components/VideoPlayer';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -23,6 +25,9 @@ function HomepageHeader() {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
+ 
+  const videoUrl = useBaseUrl('/img/tipificacao.mp4');
+
   return (
     <Layout
       title={`Início | ${siteConfig.title}`}
@@ -42,8 +47,7 @@ export default function Home() {
           </div>
 
           {/* SEÇÃO: SUBMENUS (CARDS) */}
-          <section style={{ marginBottom: '3rem' }}>
-            <Heading as="h3" style={{ textAlign: 'center', marginBottom: '1.5rem' }}></Heading>
+          <section style={{ marginBottom: '3.5rem' }}>
             <div style={{
               display: 'grid',
               /* Garante 2 colunas no mobile e expande automaticamente no PC */
@@ -69,7 +73,7 @@ export default function Home() {
                 iconName="pinhead:treasure-map"
                 title="Trilhas de aprendizagem"
                 description="Capacitações para atuação nas ouvidorias do SUS."
-                link="/seos/docs/Trilhas"
+                link="/seos/Trilhas"
                 linkText="Acessar"
               />
               <InfoCard
@@ -95,6 +99,27 @@ export default function Home() {
               />
             </div>
           </section>
+
+          {/* SEÇÃO DE VÍDEO EXPLICATIVO */}
+          <section style={{
+            marginBottom: '3rem',
+            paddingTop: '2rem',
+            borderTop: '1px solid var(--ifm-color-emphasis-200)',
+            textAlign: 'center'
+          }}>
+            <div className="row">
+              <div className="col col--8 col--offset-2">
+                <Heading as="h2" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>
+                  Entenda as Tipificações da Ouvidoria
+                </Heading>
+                <p style={{ color: 'var(--ifm-color-content-secondary)', marginBottom: '1.5rem' }}>
+                  Assista ao parecer geral sobre como classificar corretamente cada tipo de manifestação no SUS.
+                </p>
+                <VideoPlayer url={videoUrl} isLocal={true} />
+              </div>
+            </div>
+          </section>
+
           <Feedback />
         </div>
       </main>
