@@ -13,7 +13,6 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner, 'text--center')} style={{padding: '2rem 1rem'}}>
       <div className="container">
-        {/* Título responsivo com clamp para não ficar gigante no mobile */}
         <Heading as="h1" className="hero__title" style={{fontSize: 'clamp(1.6rem, 5vw, 2.5rem)', lineHeight: '1.2'}}>
           {siteConfig.title}
         </Heading>
@@ -25,7 +24,7 @@ function HomepageHeader() {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
- 
+  // Confira se o nome do arquivo em static/img/ é tipificacoes.mp4 ou tipificacao.mp4
   const videoUrl = useBaseUrl('/img/tipificacao.mp4');
 
   return (
@@ -37,20 +36,39 @@ export default function Home() {
       <main>
         <div className="container margin-vert--lg">
           
-          {/* SEÇÃO DE TEXTO COM ESPAÇAMENTO (RESPIRO EM BRANCO) */}
-          <div className="row" style={{ alignItems: 'center', marginBottom: '2.5rem', marginTop: '1rem' }}>
-            <div className="col col--8 col--offset-2 text--center">
-              <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--ifm-color-content-secondary)' }}>
-                Portal de apoio técnico e formação para a rede de ouvidorias do SUS em Minas Gerais. Selecione uma das áreas abaixo para acessar manuais, trilhas de aprendizagem, painéis gerenciais e canais de suporte.
-              </p>
+          {/* SEÇÃO PRINCIPAL: TEXTO À ESQUERDA + VÍDEO À DIREITA */}
+          <section style={{ marginBottom: '3rem', marginTop: '1rem' }}>
+            <div className="row" style={{ alignItems: 'center' }}>
+              
+              {/* Coluna do Texto */}
+              <div className="col col--6" style={{ paddingRight: '2rem', marginBottom: '1.5rem' }}>
+                <Heading as="h2" style={{ fontSize: '1.75rem', marginBottom: '1rem', textAlign: 'center' }}>
+                  Entenda as Tipificações da Ouvidoria
+                </Heading>
+                <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--ifm-color-content-secondary)', marginBottom: '1rem', textAlign: 'justify' }}>
+                  Portal de apoio técnico e formação para a rede de ouvidorias do SUS em Minas Gerais. Selecione uma das áreas abaixo para acessar manuais, trilhas de aprendizagem, painéis gerenciais e canais de suporte.
+                </p>
+                <p style={{ fontSize: '0.95rem', color: 'var(--ifm-color-emphasis-700)', textAlign: 'justfy' }}>
+                  Assista ao vídeo ao lado para conferir um parecer geral sobre como classificar corretamente cada tipo de manifestação.
+                </p>
+              </div>
+
+              {/* Coluna do Vídeo */}
+              <div className="col col--6">
+                <VideoPlayer url={videoUrl} isLocal={true} />
+              </div>
+
             </div>
-          </div>
+          </section>
 
           {/* SEÇÃO: SUBMENUS (CARDS) */}
-          <section style={{ marginBottom: '3.5rem' }}>
+          <section style={{
+            marginBottom: '3rem',
+            paddingTop: '2rem',
+            borderTop: '1px solid var(--ifm-color-emphasis-200)'
+          }}>
             <div style={{
               display: 'grid',
-              /* Garante 2 colunas no mobile e expande automaticamente no PC */
               gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
               gap: '12px',
               alignItems: 'stretch',
@@ -73,7 +91,7 @@ export default function Home() {
                 iconName="pinhead:treasure-map"
                 title="Trilhas de aprendizagem"
                 description="Capacitações para atuação nas ouvidorias do SUS."
-                link="/seos/Trilhas"
+                link="/seos/docs/Trilhas"
                 linkText="Acessar"
               />
               <InfoCard
@@ -97,26 +115,6 @@ export default function Home() {
                 link="/seos/docs/Canais_Atendimento"
                 linkText="Acessar"
               />
-            </div>
-          </section>
-
-          {/* SEÇÃO DE VÍDEO EXPLICATIVO */}
-          <section style={{
-            marginBottom: '3rem',
-            paddingTop: '2rem',
-            borderTop: '1px solid var(--ifm-color-emphasis-200)',
-            textAlign: 'center'
-          }}>
-            <div className="row">
-              <div className="col col--8 col--offset-2">
-                <Heading as="h2" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>
-                  Entenda as Tipificações da Ouvidoria
-                </Heading>
-                <p style={{ color: 'var(--ifm-color-content-secondary)', marginBottom: '1.5rem' }}>
-                  Assista ao parecer geral sobre como classificar corretamente cada tipo de manifestação no SUS.
-                </p>
-                <VideoPlayer url={videoUrl} isLocal={true} />
-              </div>
             </div>
           </section>
 
