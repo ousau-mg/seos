@@ -11,12 +11,26 @@ import VideoPlayer from '@site/src/components/VideoPlayer';
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner, 'text--center')} style={{padding: '2rem 1rem'}}>
+    <header
+      className={clsx('hero hero--primary', styles.heroBanner, 'text--center')}
+      style={{ padding: '2rem 1rem' }}
+    >
       <div className="container">
-        <Heading as="h1" className="hero__title" style={{fontSize: 'clamp(1.6rem, 5vw, 2.5rem)', lineHeight: '1.2'}}>
+        <Heading
+          as="h1"
+          className="hero__title"
+          style={{ fontSize: 'clamp(1.6rem, 5vw, 2.5rem)', lineHeight: '1.2' }}
+        >
           {siteConfig.title}
         </Heading>
-        {siteConfig.tagline && <p className="hero__subtitle" style={{fontSize: 'clamp(0.9rem, 2vw, 1.2rem)', marginTop: '0.5rem'}}>{siteConfig.tagline}</p>}
+        {siteConfig.tagline && (
+          <p
+            className="hero__subtitle"
+            style={{ fontSize: 'clamp(0.9rem, 2vw, 1.2rem)', marginTop: '0.5rem' }}
+          >
+            {siteConfig.tagline}
+          </p>
+        )}
       </div>
     </header>
   );
@@ -24,33 +38,61 @@ function HomepageHeader() {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  // Confira se o nome do arquivo em static/img/ é tipificacoes.mp4 ou tipificacao.mp4
   const videoUrl = useBaseUrl('/img/tipificacao.mp4');
-  const posterUrl = useBaseUrl('/img/Tipificacao.png'); // Sua imagem de capa
+  const posterUrl = useBaseUrl('/img/Tipificacao.png');
 
   return (
     <Layout
       title={`Início | ${siteConfig.title}`}
-      description="Sistema Estadual de Ouvidorias de Saúde - SEOS/MG">
+      description="Sistema Estadual de Ouvidorias de Saúde - SEOS/MG"
+    >
       <HomepageHeader />
 
       <main>
         <div className="container margin-vert--lg">
-          
           {/* SEÇÃO PRINCIPAL: TEXTO À ESQUERDA + VÍDEO À DIREITA */}
-          <section style={{ marginBottom: '3rem', marginTop: '1rem' }}>
+          <section
+            className="home-hero-section"
+            style={{ marginBottom: '3rem', marginTop: '1rem' }}
+          >
             <div className="row" style={{ alignItems: 'center' }}>
-              
               {/* Coluna do Texto */}
-              <div className="col col--6" style={{ paddingRight: '2rem', marginBottom: '1.5rem' }}>
-                <Heading as="h2" style={{ fontSize: '1.75rem', marginBottom: '1rem', textAlign: 'left' }}>
+              <div
+                className="col col--6 home-text-col"
+                style={{ paddingRight: '1.5rem', marginBottom: '1.5rem' }}
+              >
+                <Heading
+                  as="h2"
+                  style={{
+                    fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)',
+                    lineHeight: '1.25',
+                    marginBottom: '0.85rem',
+                    textAlign: 'left',
+                  }}
+                >
                   Apoio Técnico e Formação em Ouvidoria
                 </Heading>
-                <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--ifm-color-content-secondary)', marginBottom: '1rem', textAlign: 'left' }}>
+                <p
+                  style={{
+                    fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
+                    lineHeight: '1.6',
+                    color: 'var(--ifm-color-content-secondary)',
+                    marginBottom: '0.9rem',
+                    textAlign: 'left',
+                  }}
+                >
                   Portal de apoio técnico e formação para a rede de ouvidorias do SUS em Minas Gerais. Selecione uma das áreas abaixo para acessar manuais, trilhas de aprendizagem, respostas padrão, painéis gerenciais e canais de suporte.
                 </p>
-                <p style={{ fontSize: '0.95rem', lineHeight: '1.5', color: 'var(--ifm-color-emphasis-700)', textAlign: 'left', marginBottom: 0 }}>
-                  <strong>Tipificação de manifestações:</strong> Assista ao vídeo ao lado para conferir um panorama geral sobre como classificar corretamente cada tipo de manifestação.
+                <p
+                  style={{
+                    fontSize: 'clamp(0.88rem, 1.8vw, 0.95rem)',
+                    lineHeight: '1.5',
+                    color: 'var(--ifm-color-emphasis-700)',
+                    textAlign: 'left',
+                    marginBottom: 0,
+                  }}
+                >
+                  <strong>Tipificação de manifestações:</strong> Assista ao vídeo para conferir um panorama geral sobre como classificar corretamente cada tipo de manifestação.
                 </p>
               </div>
 
@@ -58,22 +100,26 @@ export default function Home() {
               <div className="col col--6">
                 <VideoPlayer url={videoUrl} poster={posterUrl} isLocal={true} />
               </div>
-
             </div>
           </section>
 
           {/* SEÇÃO: SUBMENUS (CARDS) */}
-          <section style={{
-            marginBottom: '3rem',
-            paddingTop: '2rem',
-            borderTop: '1px solid var(--ifm-color-emphasis-200)'
-          }}>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
-              gap: '12px',
-              alignItems: 'stretch',
-            }}>
+          <section
+            className="home-cards-section"
+            style={{
+              marginBottom: '3rem',
+              paddingTop: '2rem',
+              borderTop: '1px solid var(--ifm-color-emphasis-200)',
+            }}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+                gap: '12px',
+                alignItems: 'stretch',
+              }}
+            >
               <InfoCard
                 iconName="akar-icons:book"
                 title="Material de apoio"
@@ -117,7 +163,30 @@ export default function Home() {
                 linkText="Acessar"
               />
             </div>
+
+            <style>{`
+              @media screen and (max-width: 768px) {
+                .home-hero-section {
+                  margin-bottom: 1rem !important;
+                  margin-top: 0.25rem !important;
+                }
+
+                .home-text-col {
+                  padding-right: 0 !important;
+                }
+
+                .home-video-player {
+                  margin: 0.75rem 0 0.5rem 0 !important;
+                }
+
+                .home-cards-section {
+                  padding-top: 1.25rem !important;
+                  margin-bottom: 2rem !important;
+                }
+              }
+            `}</style>
           </section>
+
           <Feedback />
         </div>
       </main>

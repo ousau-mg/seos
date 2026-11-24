@@ -5,6 +5,7 @@ sidebar_position: 3
 import Accordion from '@site/src/components/dobravel';
 import { LinkRow } from '@site/src/components/tabela';
 import Heading from '@theme/Heading';
+import StatusNotice from '@site/src/components/StatusNotice';
 
 # Paineis e relatórios
 
@@ -17,12 +18,14 @@ import Heading from '@theme/Heading';
   </Heading>
 
   {/* AVISO PARA DISPOSITIVOS MOBILE */}
-  <div className="bi-desktop-notice">
-    <span className="bi-notice-icon">ⓘ</span>
-    <span>
-      Para uma melhor experiência de visualização,
-      recomendamos acessar este painel por um computador.
-    </span>
+  <div className="bi-mobile-only">
+    <StatusNotice
+      icon="gridicons:notice-outline"
+      title="Visualização em tela ampla recomendada"
+      badge = ""
+      description="Para uma melhor experiência de visualização, recomendamos acessar este painel por um computador."
+      compact={true}
+    />
   </div>
 
   <div className="bi-mobile-scroll">
@@ -48,12 +51,12 @@ import Heading from '@theme/Heading';
     margin: 20px 0 14px;
   }
 
-  /* AVISO MOBILE */
-  .bi-desktop-notice {
+  /* AVISO MOBILE: oculto no desktop */
+  .bi-mobile-only {
     display: none;
   }
 
-  /* CONTAINER DESKTOP (Ajustado para não sobrar espaço nas laterais e embaixo) */
+  /* CONTAINER DESKTOP */
   .bi-mobile-scroll {
     width: 100%;
     height: 550px;
@@ -79,23 +82,9 @@ import Heading from '@theme/Heading';
 
   /* TABLETS E CELULARES */
   @media screen and (max-width: 768px) {
-    .bi-desktop-notice {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 8px;
-      margin-bottom: 8px;
-      border-radius: 5px;
-      background: var(--ifm-color-emphasis-100);
-      color: var(--ifm-color-content-secondary);
-      font-size: 11px;
-      line-height: 1.35;
-    }
-
-    .bi-notice-icon {
-      font-size: 14px;
-      font-weight: bold;
-      flex-shrink: 0;
+    .bi-mobile-only {
+      display: block;
+      margin-bottom: 0.75rem;
     }
 
     .bi-section-title {

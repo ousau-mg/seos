@@ -75,19 +75,24 @@ const config = {
           src: 'img/LogoOge.png',
         },
               items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Base de Conhecimento',
-          },
-          {
-            to: '/Trilhas',
-            label: 'Trilhas de aprendizagem',
-            position: 'left', // <--- Troque 'center' por 'left' aqui
-          },
-
-        ],
+      {
+        to: '/',
+        label: 'Início',
+        position: 'left',
+        exact: true,
+      },
+      {
+        type: 'docSidebar',
+        sidebarId: 'tutorialSidebar',
+        position: 'left',
+        label: 'Base de Conhecimento',
+      },
+      {
+        to: '/Trilhas',
+        label: 'Trilhas de aprendizagem',
+        position: 'left',
+      },
+    ],
       },
       footer: {
         style: 'dark',
