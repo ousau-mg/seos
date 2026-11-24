@@ -35,7 +35,6 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/ousau-mg/seos/edit/main/README.md',
         },
         blog: {
           showReadingTime: true,

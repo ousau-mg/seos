@@ -30,12 +30,18 @@ import VideoPlayer from '@site/src/components/VideoPlayer';
 
 ---
 <div style={{ textAlign: 'center' }}>
+
 ## Como estruturar uma denúncia perfeita
+
 </div>
 
 <div style={{ textAlign: 'center', marginTop: '1rem' }}>
   <p style={{ color: 'var(--ifm-color-content-secondary)', marginBottom: '1.5rem' }}>
     Confira as orientações práticas para registrar e responder denúncias com clareza e completude no SUS.
   </p>
-  <VideoPlayer url={useBaseUrl('/img/denuncia.mp4')} isLocal={true} />
+  <VideoPlayer
+    url={useBaseUrl('/img/denuncia.mp4')}
+    poster={useBaseUrl('/img/Denuncia.png')}
+    isLocal={true}
+  />
 </div>

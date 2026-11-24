@@ -26,6 +26,7 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   // Confira se o nome do arquivo em static/img/ é tipificacoes.mp4 ou tipificacao.mp4
   const videoUrl = useBaseUrl('/img/tipificacao.mp4');
+  const posterUrl = useBaseUrl('/img/Tipificacao.png'); // Sua imagem de capa
 
   return (
     <Layout
@@ -42,20 +43,20 @@ export default function Home() {
               
               {/* Coluna do Texto */}
               <div className="col col--6" style={{ paddingRight: '2rem', marginBottom: '1.5rem' }}>
-                <Heading as="h2" style={{ fontSize: '1.75rem', marginBottom: '1rem', textAlign: 'center' }}>
-                  Entenda as Tipificações da Ouvidoria
+                <Heading as="h2" style={{ fontSize: '1.75rem', marginBottom: '1rem', textAlign: 'left' }}>
+                  Apoio Técnico e Formação em Ouvidoria
                 </Heading>
-                <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--ifm-color-content-secondary)', marginBottom: '1rem', textAlign: 'justify' }}>
-                  Portal de apoio técnico e formação para a rede de ouvidorias do SUS em Minas Gerais. Selecione uma das áreas abaixo para acessar manuais, trilhas de aprendizagem, painéis gerenciais e canais de suporte.
+                <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: 'var(--ifm-color-content-secondary)', marginBottom: '1rem', textAlign: 'left' }}>
+                  Portal de apoio técnico e formação para a rede de ouvidorias do SUS em Minas Gerais. Selecione uma das áreas abaixo para acessar manuais, trilhas de aprendizagem, respostas padrão, painéis gerenciais e canais de suporte.
                 </p>
-                <p style={{ fontSize: '0.95rem', color: 'var(--ifm-color-emphasis-700)', textAlign: 'justfy' }}>
-                  Assista ao vídeo ao lado para conferir um parecer geral sobre como classificar corretamente cada tipo de manifestação.
+                <p style={{ fontSize: '0.95rem', lineHeight: '1.5', color: 'var(--ifm-color-emphasis-700)', textAlign: 'left', marginBottom: 0 }}>
+                  <strong>Tipificação de manifestações:</strong> Assista ao vídeo ao lado para conferir um panorama geral sobre como classificar corretamente cada tipo de manifestação.
                 </p>
               </div>
 
               {/* Coluna do Vídeo */}
               <div className="col col--6">
-                <VideoPlayer url={videoUrl} isLocal={true} />
+                <VideoPlayer url={videoUrl} poster={posterUrl} isLocal={true} />
               </div>
 
             </div>
@@ -91,7 +92,7 @@ export default function Home() {
                 iconName="pinhead:treasure-map"
                 title="Trilhas de aprendizagem"
                 description="Capacitações para atuação nas ouvidorias do SUS."
-                link="/seos/docs/Trilhas"
+                link="/seos/Trilhas"
                 linkText="Acessar"
               />
               <InfoCard
@@ -117,7 +118,6 @@ export default function Home() {
               />
             </div>
           </section>
-
           <Feedback />
         </div>
       </main>

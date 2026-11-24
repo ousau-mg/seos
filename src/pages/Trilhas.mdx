@@ -4,13 +4,19 @@ hide_table_of_contents: true
 wrapperClassName: pagina-trilhas
 ---
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export function TrilhasEmbed() {
   const containerRef = useRef(null);
   const iframeRef = useRef(null);
+  const [aceitouAviso, setAceitouAviso] = useState(false);
 
   useEffect(() => {
+    // Verifica se o usuário já aceitou o aviso nesta sessão (seguro para SSR/Docusaurus)
+    if (sessionStorage.getItem('seos_trilhas_aviso') === 'true') {
+      setAceitouAviso(true);
+    }
+
     const ajustarEscala = () => {
       if (!containerRef.current || !iframeRef.current) return;
       const larguraDisponivel = containerRef.current.offsetWidth;
@@ -31,13 +37,44 @@ export function TrilhasEmbed() {
     return () => window.removeEventListener('resize', ajustarEscala);
   }, []);
 
+  const handleAceitar = () => {
+    setAceitouAviso(true);
+    sessionStorage.setItem('seos_trilhas_aviso', 'true');
+  };
+
   return (
-    <div ref={containerRef} className="trilhas-iframe-container">
-      <iframe
-        ref={iframeRef}
-        src="/seos/trilhas.html"
-        title="Trilhas de Capacitação"
-      />
+    <div>
+      {/* Faixa discreta que permanece no topo mesmo após fechar o overlay */}
+      <div className="trilhas-banner-status">
+        <strong>Versão preliminar:</strong> Este mapeamento de trilhas está em desenvolvimento e validação pela equipe SEOS/MG.
+      </div>
+
+      <div ref={containerRef} className="trilhas-iframe-container">
+        {!aceitouAviso && (
+          <div className="trilhas-overlay">
+            <div className="trilhas-overlay-card">
+              <span className="trilhas-badge">Em implantação</span>
+              <h3>Mapeamento Preliminar das Trilhas</h3>
+              <p>
+                Esta seção reúne a estrutura das trilhas de capacitação do SEOS/MG. Alguns módulos ainda estão em fase de produção ou revisão e serão disponibilizados progressivamente.
+              </p>
+              <button
+                type="button"
+                className="button button--primary"
+                onClick={handleAceitar}
+              >
+                Entendi, visualizar trilhas
+              </button>
+            </div>
+          </div>
+        )}
+
+        <iframe
+          ref={iframeRef}
+          src="/seos/trilhas.html"
+          title="Trilhas de Capacitação"
+        />
+      </div>
     </div>
   );
 }
@@ -72,11 +109,72 @@ export function TrilhasEmbed() {
     display: block;
   }
 
-  /* Ajuste específico para dispositivos móveis */
+  .trilhas-banner-status {
+    max-width: 1300px;
+    margin: 0 auto 1rem auto;
+    padding: 0.75rem 1rem;
+    border-left: 4px solid var(--ifm-color-warning-dark);
+    background-color: var(--ifm-color-warning-contrast-background);
+    color: var(--ifm-color-warning-contrast-foreground);
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+
+  .trilhas-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 6rem;
+  }
+
+  [data-theme='dark'] .trilhas-overlay {
+    background: rgba(24, 25, 26, 0.82);
+  }
+
+  .trilhas-overlay-card {
+    max-width: 480px;
+    margin: 0 1rem;
+    padding: 1.75rem;
+    background: var(--ifm-background-surface-color);
+    border: 1px solid var(--ifm-color-emphasis-300);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    text-align: center;
+  }
+
+  .trilhas-badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 999px;
+    background-color: var(--ifm-color-warning-contrast-background);
+    color: var(--ifm-color-warning-dark);
+  }
+
+ /* Ajuste específico para dispositivos móveis */
   @media screen and (max-width: 768px) {
     .trilhas-iframe-container iframe {
       width: 1200px;
       height: 3000px;
+    }
+
+    .trilhas-overlay {
+      padding-top: 2rem;
+    }
+
+    .trilhas-banner-status {
+      font-size: 0.78rem;
+      line-height: 1.35;
+      padding: 0.45rem 0.65rem;
+      margin-bottom: 0.65rem;
+      border-left-width: 3px;
     }
   }
 `}</style>

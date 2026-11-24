@@ -1,10 +1,15 @@
 import React from 'react';
 
-export default function VideoPlayer({ url, isLocal = false }) {
+export default function VideoPlayer({ url, poster, isLocal = false }) {
   return (
     <div style={{ textAlign: 'center', margin: '2rem 0' }}>
       {isLocal ? (
-        <video controls style={{ width: '100%', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+        <video
+          controls
+          poster={poster}
+          preload="metadata"
+          style={{ width: '100%', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
+        >
           <source src={url} type="video/mp4" />
         </video>
       ) : (
