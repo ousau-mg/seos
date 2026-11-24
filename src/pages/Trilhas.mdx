@@ -20,37 +20,87 @@ export function TrilhasEmbed() {
     }
   }, []);
 
-  useEffect(() => {
-    const ajustarEscala = () => {
-      if (!containerRef.current || !iframeRef.current) return;
-      const larguraDisponivel = containerRef.current.offsetWidth;
+  const ajustarEscala = () => {
+    if (!containerRef.current || !iframeRef.current) return;
+    const larguraDisponivel = containerRef.current.offsetWidth;
 
-      if (window.innerWidth <= 768) {
-        const escala = larguraDisponivel / 1200;
-        iframeRef.current.style.transform = `scale(${escala})`;
-        iframeRef.current.style.transformOrigin = 'top left';
-        containerRef.current.style.height = `${3000 * escala}px`;
-      } else {
-        iframeRef.current.style.transform = 'none';
-        containerRef.current.style.height = '1400px';
+    if (window.innerWidth <= 768) {
+      const escala = larguraDisponivel / 1200;
+      iframeRef.current.style.transform = `scale(${escala})`;
+      iframeRef.current.style.transformOrigin = 'top left';
+
+      let alturaReal = 3000;
+      try {
+        const doc =
+          iframeRef.current.contentDocument ||
+          iframeRef.current.contentWindow?.document;
+        if (doc) {
+          const h = Math.max(
+            doc.documentElement?.scrollHeight || 0,
+            doc.body?.scrollHeight || 0
+          );
+          if (h > 200) {
+            alturaReal = h;
+            iframeRef.current.style.height = `${h}px`;
+          }
+        }
+      } catch (e) {
+        // fallback caso o navegador bloqueie leitura temporária antes do load
+      }
+
+      containerRef.current.style.height = `${Math.ceil(alturaReal * escala)}px`;
+    } else {
+      iframeRef.current.style.transform = 'none';
+      iframeRef.current.style.height = '1400px';
+      containerRef.current.style.height = '1400px';
+    }
+  };
+
+  useEffect(() => {
+    const iframeEl = iframeRef.current;
+    ajustarEscala();
+
+    const rafId = requestAnimationFrame(ajustarEscala);
+    const timer = setTimeout(ajustarEscala, 350);
+
+    window.addEventListener('resize', ajustarEscala);
+    if (iframeEl) {
+      iframeEl.addEventListener('load', ajustarEscala);
+    }
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(timer);
+      window.removeEventListener('resize', ajustarEscala);
+      if (iframeEl) {
+        iframeEl.removeEventListener('load', ajustarEscala);
       }
     };
-
-    ajustarEscala();
-    window.addEventListener('resize', ajustarEscala);
-    return () => window.removeEventListener('resize', ajustarEscala);
   }, [mostrarOverlay]);
 
   const liberarPrevia = () => {
     setMostrarOverlay(false);
     sessionStorage.setItem('seos_trilhas_aviso', 'true');
+    requestAnimationFrame(() => {
+      ajustarEscala();
+      setTimeout(ajustarEscala, 200);
+    });
   };
 
   return (
     <div>
-      {mostrarOverlay ? (
-        /* ESTADO 1 (IF): Apenas o overlay centralizado enquanto o usuário não clicou */
-        <div ref={containerRef} className="trilhas-iframe-container">
+      {!mostrarOverlay && (
+        <StatusNotice
+          eyebrow="Trilhas de Capacitação"
+          badge="Em implantação"
+          title="Mapeamento preliminar em validação"
+          description="Parte dos materiais já está disponível e outros módulos estão em produção ou atualização pela equipe SEOS/MG."
+          compact={true}
+        />
+      )}
+
+      <div ref={containerRef} className="trilhas-iframe-container">
+        {mostrarOverlay && (
           <StatusNotice
             overlay={true}
             eyebrow="SEOS/MG · Prévia"
@@ -62,35 +112,15 @@ export function TrilhasEmbed() {
             secondaryText="Voltar ao início"
             secondaryHref={homeUrl}
           />
+        )}
 
-          <iframe
-            ref={iframeRef}
-            src="/seos/trilhas.html"
-            title="Trilhas de Capacitação"
-            style={{ pointerEvents: 'none' }}
-          />
-        </div>
-      ) : (
-        /* ESTADO 2 (ELSE): Após clicar, mostra o aviso discreto no topo + o mapa livre */
-        <div>
-          <StatusNotice
-            eyebrow="Trilhas de Capacitação"
-            badge="Em implantação"
-            title="Mapeamento preliminar em validação"
-            description="Parte dos materiais já está disponível e outros módulos estão em produção ou atualização pela equipe SEOS/MG."
-            compact={true}
-          />
-
-          <div ref={containerRef} className="trilhas-iframe-container">
-            <iframe
-              ref={iframeRef}
-              src="/seos/trilhas.html"
-              title="Trilhas de Capacitação"
-              style={{ pointerEvents: 'auto' }}
-            />
-          </div>
-        </div>
-      )}
+        <iframe
+          ref={iframeRef}
+          src="/seos/trilhas.html"
+          title="Trilhas de Capacitação"
+          style={{ pointerEvents: mostrarOverlay ? 'none' : 'auto' }}
+        />
+      </div>
     </div>
   );
 }
@@ -127,7 +157,6 @@ export function TrilhasEmbed() {
   @media screen and (max-width: 768px) {
     .trilhas-iframe-container iframe {
       width: 1200px;
-      height: 3000px;
     }
   }
 `}</style>
