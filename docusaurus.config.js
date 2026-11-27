@@ -82,11 +82,11 @@ const config = {
         exact: true,
       },
       {
-        type: 'docSidebar',
-        sidebarId: 'tutorialSidebar',
-        position: 'left',
-        label: 'Base de Conhecimento',
-      },
+      type: 'doc',
+      docId: 'SEOS/Normas_Diretrizes',
+      position: 'left',
+      label: 'Base de Conhecimento',
+       },
       {
         to: '/Trilhas',
         label: 'Trilhas de aprendizagem',

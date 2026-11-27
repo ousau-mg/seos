@@ -78,10 +78,10 @@ export default function Home() {
                     lineHeight: '1.6',
                     color: 'var(--ifm-color-content-secondary)',
                     marginBottom: '0.9rem',
-                    textAlign: 'left',
+                    textAlign: 'justify',
                   }}
                 >
-                  Portal de apoio técnico e formação para a rede de ouvidorias do SUS em Minas Gerais. Selecione uma das áreas abaixo para acessar manuais, trilhas de aprendizagem, respostas padrão, painéis gerenciais e canais de suporte.
+                  Portal de apoio técnico e formação para o Sistema Estadual de Ouvidorias de Saúde do SUS/MG. Selecione uma das áreas abaixo para acessar manuais, trilhas de aprendizagem, respostas padrão, painéis gerenciais e canais de atendimento.
                 </p>
                 <p
                   style={{
@@ -121,19 +121,20 @@ export default function Home() {
               }}
             >
               <InfoCard
-                iconName="akar-icons:book"
-                title="Material de apoio"
-                description="Base legal, contexto, documentos, legislação, paineis e relatórios"
-                link="/seos/docs/SEOS/Base-Legal"
+                iconName="mdi:map-add"
+                title="Criando uma Ouvidoria"
+                description="Cartilhas, Guias e Manuais, Adesão e inclusão; operação e tutoriais"
+                link="/seos/docs/SEOS/cartilhas"
                 linkText="Acessar"
               />
               <InfoCard
-                iconName="mdi:map-add"
-                title="Criar Ouvidoria"
-                description="Cartilhas, Guias e Manuais, Adesão e inclusão; operação e tutoriais"
-                link="/seos/docs/Criar"
+                iconName="akar-icons:book"
+                title="Material de apoio"
+                description="Base legal, contexto, documentos, legislação, paineis e relatórios"
+                link="/seos/docs/SEOS/Normas_Diretrizes"
                 linkText="Acessar"
               />
+            
               <InfoCard
                 iconName="pinhead:treasure-map"
                 title="Trilhas de aprendizagem"
@@ -150,7 +151,7 @@ export default function Home() {
               />
               <InfoCard
                 iconName="arcticons:microsoft-power-bi"
-                title="Painéis B.I"
+                title="Painéis e relatórios"
                 description="Status de manifestações de ouvidorias de saúde"
                 link="/seos/docs/SEOS/Paineis#secao-bi"
                 linkText="Acessar"
