@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import Accordion from '@site/src/components/dobravel';
@@ -217,22 +217,3 @@ import StatusNotice from '@site/src/components/StatusNotice';
     />
     </div>
     </Accordion>
-
-
-
-
----
-
-## Indicadores Programação Anual de Saúde
-
-<Accordion title="PAS_2026_Indicador 77">
-     <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
-    Aguardando publicação dos documentos.
-  </p>
-</Accordion>
-
-<Accordion title="PAS_2026_Indicador 78">
-     <p style={{ color: 'var(--ifm-color-content-secondary)', textAlign: 'center' }}>
-    Aguardando publicação dos documentos.
-  </p>
-</Accordion>
